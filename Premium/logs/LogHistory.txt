@@ -1,0 +1,42 @@
+[2017-08-29 10:40:27.515] [000234] [localhost] [MYSQL]
+SHOW VARIABLES LIKE 'lower_case_%'
+
+[2017-08-29 10:40:27.516] [000234] [localhost] [MYSQL]
+SHOW VARIABLES LIKE 'profiling'
+
+[2017-08-29 10:40:27.524] [000234] [localhost] [MYSQL]
+SHOW DATABASES
+
+[2017-08-29 10:41:54.832] [000235] [localhost] [MYSQL]
+SELECT @@character_set_database, @@collation_database
+
+[2017-08-29 10:41:54.846] [000235] [localhost] [MYSQL]
+SHOW FULL TABLES WHERE Table_type != 'VIEW'
+
+[2017-08-29 10:46:33.243] [000239] [localhost] [MYSQL]
+SHOW VARIABLES LIKE 'lower_case_%'
+
+[2017-08-29 10:46:33.244] [000239] [localhost] [MYSQL]
+SHOW VARIABLES LIKE 'profiling'
+
+[2017-08-29 10:46:33.249] [000239] [localhost] [MYSQL]
+SHOW DATABASES
+
+[2017-08-29 10:46:41.512] [000240] [localhost] [MYSQL]
+SELECT @@character_set_database, @@collation_database
+
+[2017-08-29 10:46:41.527] [000240] [localhost] [MYSQL]
+SHOW FULL TABLES WHERE Table_type != 'VIEW'
+
+[2017-08-29 10:48:07.249] [000241] [localhost_6306] [MYSQL]
+SHOW VARIABLES LIKE 'lower_case_%'
+
+[2017-08-29 10:48:07.249] [000241] [localhost_6306] [MYSQL]
+SHOW VARIABLES LIKE 'profiling'
+
+[2017-08-29 10:48:07.265] [000241] [localhost_6306] [MYSQL]
+SHOW DATABASES
+
+[2017-08-29 10:48:15.728] [000242] [localhost] [MYSQL]
+SELECT @@character_set_database, @@collation_database
+

@@ -1,0 +1,12 @@
+SELECT b.VISIT_ID , f.ADM_ID AS AN, a.HN, b.RF_DT AS REFER_DATE,d.ICD10_TM , d.ICD_NAME, e.UNIT_NAME, b.HOSP_ID
+FROM  opd_visits  a, refers b, opd_diagnosis c, icd10new d, service_units e, ipd_reg f 
+WHERE b.RF_DT BETWEEN '20151001' AND '20151130' 
+AND b.IS_CANCEL = 0
+AND b.RF_TYPE = 2
+AND a.VISIT_ID = b.VISIT_ID
+AND b.VISIT_ID = f.VISIT_ID
+AND c.ICD10 = d.ICD10
+AND f.WARD_NO = e.UNIT_ID
+#AND b.HOSP_ID = g.HOSP_ID
+AND f.WARD_NO = 22
+GROUP BY b.VISIT_ID ORDER BY f.ADM_ID ;

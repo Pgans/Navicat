@@ -1,0 +1,4 @@
+SELECT a.HOSPCODE ,a.HN,a.SEQ ,a.DATE_SERV,a.INTIME,b.CLINIC,b.DIAGTYPE,b.DIAGCODE,b.PROVIDER
+FROM service a, diagnosis_opd b
+WHERE a.SEQ = b.SEQ 
+

@@ -1,0 +1,3 @@
+SELECT hospid, hosp_name, COUNT(VISIT_ID) AS TOTAL
+FROM mb_referin57
+GROUP BY hospid ORDER BY TOTAL DESC;

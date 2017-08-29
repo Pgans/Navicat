@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [2017-08-29 10:40:27.515] [000234] [localhost] [MYSQL]
 SHOW VARIABLES LIKE 'lower_case_%'
 
@@ -40,3 +41,116 @@ SHOW DATABASES
 [2017-08-29 10:48:15.728] [000242] [localhost] [MYSQL]
 SELECT @@character_set_database, @@collation_database
 
+=======
+[2017-08-29 10:10:09.903] [000276] [localhost] [MYSQL]
+SHOW VARIABLES LIKE 'lower_case_%'
+
+[2017-08-29 10:10:09.998] [000276] [localhost] [MYSQL]
+SHOW VARIABLES LIKE 'profiling'
+
+[2017-08-29 10:10:10.009] [000276] [localhost] [MYSQL]
+SHOW DATABASES
+
+[2017-08-29 10:10:12.823] [000277] [localhost] [MYSQL]
+SELECT @@character_set_database, @@collation_database
+
+[2017-08-29 10:10:12.900] [000277] [localhost] [MYSQL]
+SHOW FULL TABLES WHERE Table_type != 'VIEW'
+
+[2017-08-29 10:10:16.857] [000279] [localhost] [MYSQL]
+SHOW FULL TABLES FROM `mbase_data` WHERE Table_type != 'VIEW'
+
+[2017-08-29 10:10:16.857] [000279] [localhost] [MYSQL]
+SHOW FULL TABLES FROM `mbase_data` WHERE Table_type = 'VIEW'
+
+[2017-08-29 10:10:16.858] [000279] [localhost] [MYSQL]
+SHOW PROCEDURE STATUS WHERE Db='mbase_data'
+
+[2017-08-29 10:10:17.157] [000279] [localhost] [MYSQL]
+SHOW FUNCTION STATUS WHERE Db='mbase_data'
+
+[2017-08-29 10:10:34.206] [000278] [localhost] [MYSQL]
+SET PROFILING=1;
+
+[2017-08-29 10:10:34.206] [000278] [localhost] [MYSQL]
+SHOW STATUS
+
+[2017-08-29 10:10:34.241] [000278] [localhost] [MYSQL]
+SHOW STATUS
+
+[2017-08-29 10:10:34.308] [000278] [localhost] [MYSQL]
+SELECT * FROM staff
+
+[2017-08-29 10:10:34.330] [000278] [localhost] [MYSQL]
+1146 - Table 'mbase_data.staff' doesn't exist
+
+[2017-08-29 10:11:07.540] [000278] [localhost] [MYSQL]
+SET PROFILING=1;
+
+[2017-08-29 10:11:07.540] [000278] [localhost] [MYSQL]
+SHOW STATUS
+
+[2017-08-29 10:11:07.542] [000278] [localhost] [MYSQL]
+SHOW STATUS
+
+[2017-08-29 10:11:07.582] [000278] [localhost] [MYSQL]
+SELECT * FROM  ipd_reg
+
+[2017-08-29 10:11:13.850] [000278] [localhost] [MYSQL]
+SHOW STATUS
+
+[2017-08-29 10:11:13.853] [000278] [localhost] [MYSQL]
+SELECT QUERY_ID, SUM(DURATION) AS SUM_DURATION FROM INFORMATION_SCHEMA.PROFILING GROUP BY QUERY_ID;
+
+[2017-08-29 10:11:13.876] [000278] [localhost] [MYSQL]
+SELECT STATE AS `Status`, ROUND(SUM(DURATION),7) AS `Duration`, CONCAT(ROUND(SUM(DURATION)/6.250698*100,3), '%') AS `Percentage` FROM INFORMATION_SCHEMA.PROFILING WHERE QUERY_ID=7 GROUP BY STATE;
+
+[2017-08-29 10:11:14.052] [000278] [localhost] [MYSQL]
+SELECT * FROM `mbase_data`.`ipd_reg` LIMIT 0
+
+[2017-08-29 10:11:14.053] [000278] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`ipd_reg`
+
+[2017-08-29 10:12:23.510] [000280] [localhost] [MYSQL]
+SELECT @@character_set_database, @@collation_database
+
+[2017-08-29 10:12:32.798] [000282] [localhost] [MYSQL]
+SHOW FULL TABLES FROM `mdevices_a` WHERE Table_type != 'VIEW'
+
+[2017-08-29 10:12:32.871] [000282] [localhost] [MYSQL]
+SHOW FULL TABLES FROM `mdevices_a` WHERE Table_type = 'VIEW'
+
+[2017-08-29 10:12:32.872] [000282] [localhost] [MYSQL]
+SHOW PROCEDURE STATUS WHERE Db='mdevices_a'
+
+[2017-08-29 10:12:32.884] [000282] [localhost] [MYSQL]
+SHOW FUNCTION STATUS WHERE Db='mdevices_a'
+
+[2017-08-29 10:12:43.808] [000281] [localhost] [MYSQL]
+SET PROFILING=1;
+
+[2017-08-29 10:12:43.808] [000281] [localhost] [MYSQL]
+SHOW STATUS
+
+[2017-08-29 10:12:43.810] [000281] [localhost] [MYSQL]
+SHOW STATUS
+
+[2017-08-29 10:12:43.875] [000281] [localhost] [MYSQL]
+SELECT *  from devices
+
+[2017-08-29 10:12:44.042] [000281] [localhost] [MYSQL]
+SHOW STATUS
+
+[2017-08-29 10:12:44.044] [000281] [localhost] [MYSQL]
+SELECT QUERY_ID, SUM(DURATION) AS SUM_DURATION FROM INFORMATION_SCHEMA.PROFILING GROUP BY QUERY_ID;
+
+[2017-08-29 10:12:44.052] [000281] [localhost] [MYSQL]
+SELECT STATE AS `Status`, ROUND(SUM(DURATION),7) AS `Duration`, CONCAT(ROUND(SUM(DURATION)/0.148211*100,3), '%') AS `Percentage` FROM INFORMATION_SCHEMA.PROFILING WHERE QUERY_ID=3 GROUP BY STATE;
+
+[2017-08-29 10:12:44.213] [000281] [localhost] [MYSQL]
+SELECT * FROM `mdevices_a`.`devices` LIMIT 0
+
+[2017-08-29 10:12:44.214] [000281] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mdevices_a`.`devices`
+
+>>>>>>> 12f826d9c5104c23af8a578e36cdec99090689a6

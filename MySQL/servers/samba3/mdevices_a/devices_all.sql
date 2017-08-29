@@ -1,0 +1,1 @@
+SELECT * from devices WHERE sale_date = 0000-00-00

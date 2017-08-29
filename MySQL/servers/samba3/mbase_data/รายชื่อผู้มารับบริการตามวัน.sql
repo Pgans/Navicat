@@ -1,0 +1,20 @@
+SELECT o.VISIT_ID AS visits, c.HN AS 'HN',DATE_FORMAT(o.REG_DATETIME,'%Y%m%d')AS REG_DATETIME,
+CASE 
+	WHEN PRENAME not in('') THEN PRENAME
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 < '20' AND sex='1' AND MARRIAGE = '4'THEN 'สามเณร'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 >= '20' AND sex='1' AND MARRIAGE = '4'THEN 'พระภิกษุ'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 < '15'  AND sex='1' THEN 'เด็กชาย'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 >= '15' AND sex='1' THEN 'นาย'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 < '15'  AND sex='2' THEN 'เด็กหญิง'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 >= '15' AND sex='2' AND MARRIAGE='1' THEN 'นางสาว'
+ELSE 'นาง' 
+END AS 'คำนำหน้าชื่อ',p.FNAME AS 'ชื่อ', p.LNAME AS 'นามสกุล',
+CASE 
+WHEN p.sex = '1' THEN 'ชาย'
+WHEN p.sex = '2' THEN 'หญิง'
+END AS SEX,FLOOR(DATEDIFF(NOW(),p.BIRTHDATE)/365.25)AS AGE
+FROM population p, cid_hn c, opd_visits o
+WHERE c.CID = p.CID 
+AND o.HN = c.HN
+AND o.REG_DATETIME BETWEEN '2014.01.01 00:00' AND '2014.01.02 23:59'
+ORDER BY o.VISIT_ID, o.REG_DATETIME;

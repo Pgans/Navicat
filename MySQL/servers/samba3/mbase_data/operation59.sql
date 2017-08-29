@@ -1,0 +1,4 @@
+
+SELECT code,a.nickname,COUNT(a.visit_id) AS amount FROM
+(SELECT * FROM mb_operation5859  WHERE REG_DATETIME BETWEEN '20151001' AND '20160930') AS a
+GROUP BY CODE ORDER BY amount DESC;

@@ -1,0 +1,4 @@
+SELECT a.CID, b.FNAME, b.LNAME, b.BIRTHDATE, a.START_DATE, a.STOP_DATE
+FROM staff a, population b
+WHERE  a.CID = b.CID
+AND a.STOP_DATE = 0

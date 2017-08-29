@@ -1,0 +1,7 @@
+SELECT a.UNIT_ID,s.UNIT_NAME,COUNT(a.HN)AS Amount
+FROM  appoints a,opd_visits o, service_units s
+WHERE a.AP_DATE BETWEEN '2014.10.01' AND '2015.04.30'
+AND a.HN= o.HN
+AND s.UNIT_ID = a.unit_id
+AND a.AP_DATE = DATE(o.REG_DATETIME)
+GROUP BY a.UNIT_ID ORDER BY a.UNIT_ID;

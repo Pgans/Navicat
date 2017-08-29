@@ -1,0 +1,4 @@
+<ExportProfile Ver="1.1">
+  <General ConnectionName="samba3" DatabaseName="mbase_data" SchemaName="" ExportType="Excel" TargetCodepage="65001" AddTimeStamp="false" TimeStampFormat="YYYYMMDD" IncludeTitle="true" FieldDelimiter="&#9;" DateFormat="MDY" DateSeparator="/" TimeSeparator=":" DecimalSeparator="." TextQualifier="" RowDelimiter="0" XMLFormat="Element" AppendRecord="false" ContinueOnError="true"/>
+  <STable STableName="pt&#xE21;&#xE32;&#xE25;&#xE07;&#xE17;&#xE30;&#xE40;&#xE1A;&#xE35;&#xE22;&#xE19;&#xE15;&#xE23;&#xE27;&#xE08;&#xE17;&#xE35;&#xE48;&#xE41;&#xE1C;&#xE19;&#xE01;&#xE40;&#xE1A;&#xE32;&#xE2B;&#xE27;&#xE32;&#xE19;-dx-address" TTableName="" TargetFile="C:\users\pgan\Desktop\pt&#xE21;&#xE32;&#xE25;&#xE07;&#xE17;&#xE30;&#xE40;&#xE1A;&#xE35;&#xE22;&#xE19;&#xE15;&#xE23;&#xE27;&#xE08;&#xE17;&#xE35;&#xE48;&#xE41;&#xE1C;&#xE19;&#xE01;&#xE40;&#xE1A;&#xE32;&#xE2B;&#xE27;&#xE32;&#xE19;-dx-address.xls" AllFields="true"/>
+</ExportProfile>

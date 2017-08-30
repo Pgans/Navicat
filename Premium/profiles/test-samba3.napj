@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BatchJobProfile Ver="1.2">
+  <General SendEmail="false" SMTP="" Port="25" EmailFrom="" EmailTo="" EmailCC="" UseAuthentication="false" Username="" Password="" SecureNever="true" SecureTLS="false" SecureSSL="false"/>
+</BatchJobProfile>

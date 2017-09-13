@@ -1,0 +1,9 @@
+<TransferProfile Ver="1.3">
+  <General SourceConn="samba3" SourceConnType="MYSQL" SourceDatabase="mdevices_a" SourceSchema="" TargetConnType="MYSQL" TargetConn="localhost" TargetDatabase="mdevices_a" TargetSchema="" LockSourceTables="false" TransferToServer="true" TransferToFile="false" ContinueOnError="false" CreateDatabase="true" CreateTables="true" IncludeTableOptions="false" DropTables="true" CreateTriggers="true" CreateRecords="true" UseDelayedInsert="false" UseCompleteInsert="false" UseExtendedInsert="true" LockTargetTables="false" UseBlobHex="true" CreateIndexes="true" IncludeForeignKeys="true" IncludeUniques="true" IncludeChecks="true" IncludeRules="true" IncludeEngine="true" IncludeCharset="true" IncludeAutoIncrement="true" IncludeOtherTableOptions="false" IgnoreBlobForFile="false" IncludeSourceSchemaNameForFile="false" UseTransaction="true" IncludeExcludes="true" DumpFile="" TargetFileFormatConnType="None" TargetFileFormatServerVersion="0" TargetFileFormatEncoding="0"/>
+  <Tables SelectAll="true"/>
+  <Views SelectAll="false"/>
+  <StoredProcs SelectAll="true"/>
+  <StoredFuncs SelectAll="false"/>
+  <Events SelectAll="false"/>
+  <Sequences SelectAll="false"/>
+</TransferProfile>

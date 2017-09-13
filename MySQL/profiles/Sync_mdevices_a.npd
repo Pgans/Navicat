@@ -1,0 +1,22 @@
+<DataSynchronizeProfile Ver="1.2">
+  <General SourceConn="samba3" SourceDatabase="mdevices_a" SourceSchema="" TargetConn="localhost" TargetDatabase="mdevices_a" TargetSchema="" UseInsert="true" UseUpdate="true" UseDelete="true" UseTransaction="true" ShowSynDetail="true"/>
+  <SynTable SourceTable="categories" TargetTable="categories"/>
+  <SynTable SourceTable="departments" TargetTable="departments"/>
+  <SynTable SourceTable="devices" TargetTable="devices"/>
+  <SynTable SourceTable="faculty" TargetTable="faculty"/>
+  <SynTable SourceTable="ivtmaterials" TargetTable="ivtmaterials"/>
+  <SynTable SourceTable="materials" TargetTable="materials"/>
+  <SynTable SourceTable="mb_devices_fiscal" TargetTable="mb_devices_fiscal"/>
+  <SynTable SourceTable="migration" TargetTable="migration"/>
+  <SynTable SourceTable="permits" TargetTable="permits"/>
+  <SynTable SourceTable="person" TargetTable="person"/>
+  <SynTable SourceTable="positions" TargetTable="positions"/>
+  <SynTable SourceTable="serviceout" TargetTable="serviceout"/>
+  <SynTable SourceTable="status" TargetTable="status"/>
+  <SynTable SourceTable="store" TargetTable="store"/>
+  <SynTable SourceTable="students" TargetTable="students"/>
+  <SynTable SourceTable="treatments" TargetTable="treatments"/>
+  <SynTable SourceTable="units" TargetTable="units"/>
+  <SynTable SourceTable="university" TargetTable="university"/>
+  <SynTable SourceTable="user" TargetTable="user"/>
+</DataSynchronizeProfile>

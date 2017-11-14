@@ -1,0 +1,5 @@
+[2017-11-01 14:41:04] [Msg] Table Type - Excel spreadsheet
+[2017-11-01 14:41:04] [Msg] Getting and Exporting data ...
+[2017-11-01 14:41:04] [Msg] Export query [สิทธิ์ว่าง]
+[2017-11-01 14:41:04] [Msg] Export to - C:\users\pgans\Desktop\สิทธิ์ว่าง.xls
+[2017-11-01 14:41:04] [Msg] Finished - Successfully

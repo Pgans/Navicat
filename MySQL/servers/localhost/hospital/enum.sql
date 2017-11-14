@@ -1,0 +1,3 @@
+ALTER TABLE Employee ADD Age INT(2) AFTER FirstName;
+
+ALTER TABLE `user` ADD  enum('EMPLOYEE','USER','ADMIN') NOT NULL

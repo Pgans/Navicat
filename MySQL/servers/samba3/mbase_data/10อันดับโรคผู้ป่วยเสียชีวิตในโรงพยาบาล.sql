@@ -18,4 +18,4 @@ AND opd_diagnosis.ICD10 =  icd10new.ICD10
 #AND opd_visits.VISIT_ID = opd_diagnosis.VISIT_ID
 AND ipd_reg.VISIT_ID = opd_diagnosis.VISIT_ID
 AND (ipd_reg.DSC_TYPE IN ("6","7") OR  ipd_reg.DSC_STATUS = "9")
-AND deaths.DEATH_DATE BETWEEN "20141001" and "20150930" GROUP BY opd_visits.VISIT_ID) AS a  GROUP BY a.icdname ORDER BY COUNT(icdname) DESC
+AND deaths.DEATH_DATE BETWEEN "20161001" and "20170930" GROUP BY opd_visits.VISIT_ID) AS a  GROUP BY a.icdname ORDER BY COUNT(icdname) DESC

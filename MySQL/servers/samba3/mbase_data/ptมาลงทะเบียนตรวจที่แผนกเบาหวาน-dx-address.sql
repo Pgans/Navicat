@@ -25,8 +25,9 @@ AND CONCAT(LEFT(population.TOWN_ID,4),'0000') = c.TOWN_ID
 AND CONCAT(LEFT(population.TOWN_ID,2),'000000') = d.TOWN_ID
 AND opd_visits.HN = cid_hn.HN
 AND opd_visits.VISIT_ID = opd_diagnosis.VISIT_ID
-AND opd_visits.REG_DATETIME BETWEEN '20160101' AND '20160531'
+AND opd_visits.REG_DATETIME BETWEEN '20171101' AND '20171231'
 AND opd_visits.is_cancel = 0 
 AND service_units.UNIT_ID = opd_visits.UNIT_REG 
 AND opd_visits.UNIT_REG = 15
+AND LEFT(ICD10_TM,1) = 'E'
 GROUP BY opd_visits.HN ORDER BY opd_visits.REG_DATETIME,icd10new.ICD10;

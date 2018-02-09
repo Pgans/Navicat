@@ -1,9 +1,9 @@
 SELECT * FROM ipd_reg WHERE ADM_DT >= CURDATE() -1;
 
-SELECT * FROM opd_visits WHERE reg_datetime > CURDATE() ;
+SELECT * FROM opd_visits WHERE reg_datetime > CURDATE() -1 ;
 
 *******************InsertData********************************
-SELECT  *  FROM mb_accidents_fiscal WHERE  datetime_ae >= CURDATE()-1 ;
+SELECT  *  FROM mb_accidents_fiscal WHERE  datetime_ae >= CURDATE()-2 ;
 SELECT * FROM mb_visitsdx WHERE REG_DATETIME > CURDATE();
 SELECT * FROM mb_common_cold WHERE REG_DATETIME >CURDATE()-1 ;
 SELECT * FROM mb_ipdreg_fiscal WHERE admit_date > CURDATE()-1;
@@ -19,8 +19,8 @@ SELECT * FROM mb_nbb WHERE BDATE > CURDATE() -20;
 SELECT * FROM mb_outstan WHERE MU_DATE >CURDATE() -2; 
 
 *******************InsertDataBig*****************************
-SELECT * FROM mb_dsc WHERE DSC_DATE >= '2018-01-01' ;
-SELECT * FROM mb_dxopd WHERE REGDATE >='2017-12-31'; 
+SELECT * FROM mb_dsc WHERE DSC_DATE >= '2018-02-07' ;
+SELECT * FROM mb_dxopd WHERE REGDATE >='2018-02-06'; 
 SELECT * FROM mb_ipddx WHERE ADM_DT > CURDATE() -2;
 SELECT * FROM mb_oper_dent WHERE REG_DATETIME > CURDATE()-1 ;
 SELECT * FROM mb_operation WHERE REG_DATETIME > CURDATE() -1;

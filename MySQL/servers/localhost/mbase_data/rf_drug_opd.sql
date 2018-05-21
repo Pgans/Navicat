@@ -21,7 +21,7 @@ gcoffice.offid AS hcode
 ,CONCAT(TRIM(p.FNAME),' ',TRIM(p.LNAME) ) provider_name
 ,s. LICENCE provider_licenseno
 ,s.CID provider_cid
-,dr.ATTENTION  drugusage_text
+,r.ROUTE_THAI drugusage_text
 FROM gcoffice, refers a
 INNER JOIN staff s ON a.STAFF_ID  = s.STAFF_ID
 INNER JOIN population p ON p.CID = s.CID
@@ -31,6 +31,7 @@ INNER JOIN prescriptions b ON v.visit_id = b.visit_id  AND b.IS_CANCEL = 0
 INNER JOIN drugs  dr ON b.drug_id = dr.drug_id 
 LEFT OUTER JOIN usage_units d ON dr.PACKAGE = d.UUNIT_ID
 INNER JOIN service_units sv ON sv.UNIT_ID = a.UNIT_ID
+INNER JOIN routes r ON r.ROUTE_ID = b.ROUTE_ID
 WHERE a.RF_DT > '2018.01.01'
 AND v.VISIT_ID NOT IN (@vni)
 

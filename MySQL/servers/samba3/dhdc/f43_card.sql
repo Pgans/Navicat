@@ -5,7 +5,11 @@ uc_inscl.UC_CARDID AS INSID, DATE_FORMAT(uc_inscl.UC_REGISTER,'%Y%m%d') AS START
 
 DATE_FORMAT(uc_inscl.UC_EXPIRE,'%Y%m%d')AS EXPIREDATE, uc_inscl.HOSPMAIN AS MAIN,uc_inscl.HOSPSUB AS SUB,
 
+<<<<<<< HEAD
 DATE_FORMAT(NOW(), '%Y%m%d%H%i%s') AS D_UPDATE, uc_inscl.CID
+=======
+DATE_FORMAT(NOW(), '%Y%m%d%H%i%s') AS D_UPDATE
+>>>>>>> 58960b3368b692446f2e18b93440abfe2f1e75ff
 
 FROM mbase_data.gcoffice, mbase_data.cid_hn, mbase_data.population,mbase_data.uc_inscl,mbase_data.opd_visits
 

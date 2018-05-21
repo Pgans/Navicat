@@ -1,0 +1,5 @@
+[2015-07-10 11:08:15] [Msg] Table Type - Text file
+[2015-07-10 11:08:15] [Msg] Getting and Exporting data ...
+[2015-07-10 11:08:15] [Msg] Export query [population update]
+[2015-07-10 11:08:15] [Msg] Export to - C:\AppServ\www\pop.txt
+[2015-07-10 11:08:15] [Msg] Finished - Successfully

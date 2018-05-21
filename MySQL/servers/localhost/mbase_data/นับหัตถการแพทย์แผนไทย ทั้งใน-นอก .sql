@@ -1,0 +1,16 @@
+SELECT DATE_FORMAT(a.REG_DATETIME,'%Y-%m-%d') AS REGDATE , a.HN, a.VISIT_ID, e.`CODE`, e.TNAME, d.STAFF_ID,d.SURGEON_ID,
+CASE
+WHEN a.VISIT_ID NOT IN  (SELECT VISIT_ID FROM mobile_visits) THEN 1
+WHEN a.VISIT_ID IN (SELECT VISIT_ID FROM mobile_visits )  THEN 2
+END AS INOUTS, e.COST, e.ICD9_CODE
+FROM  opd_visits a, cid_hn b, population c, opd_operations d, icd9cm e, staff f
+WHERE  a.REG_DATETIME BETWEEN '2017.03.01 00:00' AND '2017.03.01 23.59'
+AND  a.IS_CANCEL = 0
+AND d.IS_CANCEL = 0
+AND a.HN = b.HN
+AND b.CID = c.CID
+AND a.VISIT_ID = d.VISIT_ID
+AND d.icd9 = e.ICD9
+AND c.CID = f.CID
+AND e.CGD_ID = 15
+ORDER BY a.VISIT_ID

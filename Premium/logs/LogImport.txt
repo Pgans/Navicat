@@ -1,0 +1,6 @@
+[2018-04-09 14:12:16] [Msg] Import start
+[2018-04-09 14:12:16] [Msg] Import type - Text file
+[2018-04-09 14:12:16] [Msg] Import from - C:\F43\IMPORT\service.txt
+[2018-04-09 14:12:16] [Msg] Import table [service]
+[2018-04-09 14:12:18] [Msg] Processed:10694, Added:10694, Updated:0, Deleted:0, Errors:0
+[2018-04-09 14:12:18] [Msg] Finished - Successfully

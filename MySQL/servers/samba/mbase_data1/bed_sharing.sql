@@ -1,17 +1,17 @@
-SELECT DATE_FORMAT(d.REG_DATETIME,'%Y-%m-%d') AS regdate, DATE_FORMAT(d.REG_DATETIME,'%H:%m:%s') AS time, 
-offid AS hcode , a.WARD_NO AS ward_code, b.UNIT_NAME AS ward_name, 
+SELECT  CURDATE() AS regdate, CURTIME() AS time , a.offid AS hcode,
+b.UNIT_ID AS ward_code, b.UNIT_NAME AS ward_name, 
 CASE 
-WHEN a.WARD_NO = '22' THEN 4
-WHEN a.WARD_NO = '38' THEN 16
-WHEN a.WARD_NO = '39' THEN 19
-END AS ward_bed, COUNT(a.BED_NO)  AS ward_pt
-FROM ipd_reg a, service_units b, gcoffice c, opd_visits d
-WHERE a.WARD_NO = b.UNIT_ID
-AND a.WARD_NO IN (22,38,39)
-AND a.VISIT_ID = d.VISIT_ID 
-AND d.IS_CANCEL = 0
-AND a.IS_CANCEL = 0
-GROUP BY  regdate, ward_code
-
-
-#SELECT * FROM ipd_reg WHERE ADM_DT BETWEEN ' 2017.12.17 00:01' AND '2017.12.17 23:59' ORDER BY WARD_NO
+WHEN b.UNIT_ID = '22' THEN 2
+WHEN b.UNIT_ID = '38' THEN 15
+WHEN b.UNIT_ID = '39' THEN 15
+END AS ward_std,
+CASE 
+WHEN b.UNIT_ID = '22' THEN 9
+WHEN b.UNIT_ID = '38' THEN 25
+WHEN b.UNIT_ID = '39' THEN 25
+END AS ward_bed, COUNT(i.ADM_ID) AS ward_pt
+FROM mbase_data1.gcoffice a, mbase_data1.service_units b
+LEFT JOIN mbase_data1.ipd_reg i ON b.UNIT_ID = i.WARD_NO AND i.IS_CANCEL = 0 AND i.DSC_DT = 0  AND i.DSC_STATUS = 0 
+AND i.DSC_TYPE = 0 AND i.BED_NO <> ''
+WHERE b.UNIT_ID IN ('22','38','39')
+GROUP BY b.UNIT_ID  

@@ -1,0 +1,24 @@
+[2018-05-21 09:30:07.651] [001105] [samba3] [MYSQL]
+SHOW VARIABLES LIKE 'lower_case_%'
+
+[2018-05-21 09:30:07.651] [001105] [samba3] [MYSQL]
+SHOW VARIABLES LIKE 'profiling'
+
+[2018-05-21 09:30:07.651] [001105] [samba3] [MYSQL]
+SHOW DATABASES
+
+[2018-05-21 09:30:09.683] [001106] [samba3] [MYSQL]
+SELECT @@character_set_database, @@collation_database
+
+[2018-05-21 09:30:09.698] [001106] [samba3] [MYSQL]
+SHOW FULL TABLES WHERE Table_type != 'VIEW'
+
+[2018-05-21 09:31:47.984] [001106] [samba3] [MYSQL]
+SHOW CREATE TABLE `refers`
+
+[2018-05-21 09:31:47.999] [001107] [samba3] [MYSQL]
+SELECT * FROM `refers` LIMIT 0, 1000
+
+[2018-05-21 09:31:48.111] [001107] [samba3] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`refers`
+

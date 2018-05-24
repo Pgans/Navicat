@@ -1,24 +1,1404 @@
-[2018-05-21 09:30:07.651] [001105] [samba3] [MYSQL]
+[2018-05-24 09:27:59.957] [179430] [smart_refer_ubon] [MYSQL]
 SHOW VARIABLES LIKE 'lower_case_%'
 
-[2018-05-21 09:30:07.651] [001105] [samba3] [MYSQL]
+[2018-05-24 09:27:59.988] [179430] [smart_refer_ubon] [MYSQL]
 SHOW VARIABLES LIKE 'profiling'
 
-[2018-05-21 09:30:07.651] [001105] [samba3] [MYSQL]
+[2018-05-24 09:28:00.035] [179430] [smart_refer_ubon] [MYSQL]
 SHOW DATABASES
 
-[2018-05-21 09:30:09.683] [001106] [samba3] [MYSQL]
+[2018-05-24 09:28:02.617] [179431] [smart_refer_ubon] [MYSQL]
 SELECT @@character_set_database, @@collation_database
 
-[2018-05-21 09:30:09.698] [001106] [samba3] [MYSQL]
+[2018-05-24 09:28:02.695] [179431] [smart_refer_ubon] [MYSQL]
 SHOW FULL TABLES WHERE Table_type != 'VIEW'
 
-[2018-05-21 09:31:47.984] [001106] [samba3] [MYSQL]
-SHOW CREATE TABLE `refers`
+[2018-05-24 09:28:17.891] [179430] [smart_refer_ubon] [MYSQL]
+SHOW CHARACTER SET
 
-[2018-05-21 09:31:47.999] [001107] [samba3] [MYSQL]
-SELECT * FROM `refers` LIMIT 0, 1000
+[2018-05-24 09:28:17.922] [179430] [smart_refer_ubon] [MYSQL]
+SHOW COLLATION
 
-[2018-05-21 09:31:48.111] [001107] [samba3] [MYSQL]
+[2018-05-24 09:28:18.032] [179431] [smart_refer_ubon] [MYSQL]
+SHOW ENGINES
+
+[2018-05-24 09:28:18.079] [179431] [smart_refer_ubon] [MYSQL]
+SHOW TABLE STATUS LIKE 'referout'
+
+[2018-05-24 09:28:18.110] [179431] [smart_refer_ubon] [MYSQL]
+SHOW CREATE TABLE `referout`
+
+[2018-05-24 09:28:18.141] [179431] [smart_refer_ubon] [MYSQL]
+SELECT TABLE_NAME, PARTITION_NAME, SUBPARTITION_NAME, PARTITION_METHOD, SUBPARTITION_METHOD, PARTITION_EXPRESSION, SUBPARTITION_EXPRESSION, PARTITION_DESCRIPTION, PARTITION_COMMENT, NODEGROUP, TABLESPACE_NAME FROM information_schema.PARTITIONS WHERE TABLE_SCHEMA LIKE 'smartrefer_db' AND NOT ISNULL(PARTITION_NAME) AND TABLE_NAME LIKE 'referout' ORDER BY TABLE_NAME, PARTITION_NAME, PARTITION_ORDINAL_POSITION, SUBPARTITION_ORDINAL_POSITION
+
+[2018-05-24 09:28:18.188] [179431] [smart_refer_ubon] [MYSQL]
+SHOW FULL COLUMNS FROM `referout`
+
+[2018-05-24 09:28:18.219] [179431] [smart_refer_ubon] [MYSQL]
+SHOW CREATE TABLE `referout`
+
+[2018-05-24 09:28:18.251] [179431] [smart_refer_ubon] [MYSQL]
+SELECT * FROM `information_schema`.`columns` WHERE TABLE_NAME='referout' AND TABLE_SCHEMA='smartrefer_db'
+
+[2018-05-24 09:28:18.282] [179431] [smart_refer_ubon] [MYSQL]
+SHOW INDEX FROM `referout`
+
+[2018-05-24 09:28:18.320] [179431] [smart_refer_ubon] [MYSQL]
+SELECT trigger_name, event_manipulation, event_object_table, action_statement, action_timing, DEFINER FROM information_schema.triggers WHERE BINARY event_object_schema='smartrefer_db' AND BINARY event_object_table='referout'
+
+[2018-05-24 09:28:18.351] [179431] [smart_refer_ubon] [MYSQL]
+SHOW CREATE TABLE `referout`
+
+[2018-05-24 09:28:39.539] [000062] [localhost] [MYSQL]
+SHOW VARIABLES LIKE 'lower_case_%'
+
+[2018-05-24 09:28:39.539] [000062] [localhost] [MYSQL]
+SHOW VARIABLES LIKE 'profiling'
+
+[2018-05-24 09:28:39.554] [000062] [localhost] [MYSQL]
+SHOW DATABASES
+
+[2018-05-24 09:28:41.259] [000063] [localhost] [MYSQL]
+SELECT @@character_set_database, @@collation_database
+
+[2018-05-24 09:28:41.306] [000063] [localhost] [MYSQL]
+SHOW FULL TABLES WHERE Table_type != 'VIEW'
+
+[2018-05-24 09:29:09.738] [000065] [localhost] [MYSQL]
+SHOW FULL TABLES FROM `mbase_data` WHERE Table_type != 'VIEW'
+
+[2018-05-24 09:29:09.785] [000065] [localhost] [MYSQL]
+SHOW FULL TABLES FROM `mbase_data` WHERE Table_type = 'VIEW'
+
+[2018-05-24 09:29:09.816] [000065] [localhost] [MYSQL]
+SHOW PROCEDURE STATUS WHERE Db='mbase_data'
+
+[2018-05-24 09:29:09.816] [000065] [localhost] [MYSQL]
+SHOW FUNCTION STATUS WHERE Db='mbase_data'
+
+[2018-05-24 09:29:43.788] [000064] [localhost] [MYSQL]
+SET PROFILING=1;
+
+[2018-05-24 09:29:43.788] [000064] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 09:29:43.819] [000064] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 09:29:43.819] [000064] [localhost] [MYSQL]
+#SET @vn = ?p0;
+SET @vn = '0001941388';
+
+[2018-05-24 09:29:43.835] [000064] [localhost] [MYSQL]
+SELECT
+gcoffice.offid  hcode
+, CONCAT(gcoffice.offid,'-3-',a.REFER_ID) refer_no
+, '1' refertype_id
+,DATE_FORMAT(a.RF_DT,'%Y%m%d')  refer_date
+,DATE_FORMAT(a.RF_DT,'%H%i') refer_time
+,CASE
+WHEN a.UNIT_ID IN ( 02,12,13,14,15,16,17,18,19,20,27) THEN '1'
+WHEN a.UNIT_ID = 11 THEN '3'
+WHEN a.UNIT_ID IN (38,39) THEN '2'
+WHEN a.UNIT_ID = 22 THEN '4'
+END AS  station_id
+,CASE
+WHEN a.UNIT_ID = 01 THEN '001'
+WHEN a.UNIT_ID = 02 THEN '002'
+WHEN a.UNIT_ID = 08 THEN '007'
+WHEN a.UNIT_ID = 11 THEN '023'
+WHEN a.UNIT_ID = 26  THEN '015'
+WHEN a.UNIT_ID = 22 THEN '036'
+WHEN a.UNIT_ID IN (38,39) THEN '026'
+WHEN a.UNIT_ID IN (03,04,05) THEN '004'
+WHEN a.UNIT_ID =31 THEN '013'
+WHEN a.UNIT_ID IN (12,13,14,15,16,17,18,19,20,27) THEN '020'
+END AS location_id
+,v.HN  pid
+,c.CID cid
+,v.HN hn
+, i.ADM_ID an
+,a.VISIT_ID vn
+,CASE 
+	WHEN PRENAME not in('') THEN PRENAME
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 < '20' AND sex='1' AND MARRIAGE = '4'THEN 'สามเณร'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 >= '20' AND sex='1' AND MARRIAGE = '4'THEN 'พระภิกษุ'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 < '15'  AND sex='1' THEN 'เด็กชาย'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 >= '15' AND sex='1' THEN 'นาย'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 < '15'  AND sex='2' THEN 'เด็กหญิง'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 >= '15' AND sex='2' AND MARRIAGE='1' THEN 'นางสาว'
+ELSE 'นาง'
+END AS pname
+, p.FNAME fname
+, p.LNAME lname
+,CONCAT(timestampdiff(year,p.BIRTHDATE,a.RF_DT) ,'-',timestampdiff(month,p.BIRTHDATE,a.RF_DT)-(timestampdiff(year,p.BIRTHDATE,a.RF_DT)*12) 
+,'-',timestampdiff(day,date_add(p.BIRTHDATE,interval (timestampdiff(month,p.BIRTHDATE,a.RF_DT)) month),a.RF_DT)) AS age
+,p.HOME_ADR addrpart
+,SUBSTR(p.TOWN_ID,7,2) moopart
+,SUBSTR(p.TOWN_ID,5,2) tmbpart
+,SUBSTR(p.TOWN_ID,3,2) amppart
+,SUBSTR(p.TOWN_ID,1,2) chwpart
+,CASE
+WHEN m.INSCL IN (03,04) THEN '89'
+END AS pttype_id
+,u.UC_CARDID pttypeno
+,u.HOSPMAIN  hospmain
+,u.HOSPSUB hospsub
+,'' typept_id
+,'' strength_id
+, a.STAFF_ID doctor_id
+,a.HOSP_ID  refer_hospcode
+, '' cause_referout_id
+,'' expire_date
+,'' loads_id
+,'' is_coordinate_doctor
+,'' is_coordinate_nurse
+,'' coordinate_id
+,'' is_coordinate_result
+,'' hospcode_deny_complete
+,'' is_upload
+,'' is_download
+,'' is_receive
+,'' is_cancel
+,'' is_referboard
+,'' is_deny
+,'' refer_type
+,'' refer_station_id
+,'' diag_text
+,'' serviceplan_id
+,'' caretype_id
+,'' refer_result
+,'' is_appoint
+,'' is_refer_result
+,'' is_send_back
+,'' is_send_pack
+,'' is_care_plan
+FROM gcoffice, refers a
+LEFT JOIN opd_visits v ON a.VISIT_ID = v.VISIT_ID AND v.IS_CANCEL = 0
+LEFT JOIN cid_hn c ON v.HN = c.HN 
+LEFT JOIN population p ON c.CID = p.CID
+LEFT JOIN ipd_reg i ON v.VISIT_ID = i.VISIT_ID AND i.IS_CANCEL = 0
+LEFT JOIN uc_inscl u ON p.CID = u.CID AND u.DATE_ABORT = 0
+LEFT JOIN main_inscls m ON v.INSCL = m.INSCL
+WHERE  a.RF_TYPE= 2
+AND a.VISIT_ID = @vn
+
+[2018-05-24 09:29:46.335] [000064] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 09:29:46.335] [000064] [localhost] [MYSQL]
+SELECT QUERY_ID, SUM(DURATION) AS SUM_DURATION FROM INFORMATION_SCHEMA.PROFILING GROUP BY QUERY_ID;
+
+[2018-05-24 09:29:46.335] [000064] [localhost] [MYSQL]
+SELECT STATE AS `Status`, ROUND(SUM(DURATION),7) AS `Duration`, CONCAT(ROUND(SUM(DURATION)/2.488637*100,3), '%') AS `Percentage` FROM INFORMATION_SCHEMA.PROFILING WHERE QUERY_ID=4 GROUP BY STATE;
+
+[2018-05-24 09:53:06.911] [179431] [smart_refer_ubon] [MYSQL]
+SHOW ENGINES
+
+[2018-05-24 09:53:06.911] [179431] [smart_refer_ubon] [MYSQL]
+2013 - Lost connection to MySQL server during query
+
+[2018-05-24 09:53:07.052] [179491] [smart_refer_ubon] [MYSQL]
+SHOW ENGINES
+
+[2018-05-24 09:53:07.114] [179491] [smart_refer_ubon] [MYSQL]
+SHOW TABLE STATUS LIKE 'referout'
+
+[2018-05-24 09:53:07.145] [179491] [smart_refer_ubon] [MYSQL]
+SHOW CREATE TABLE `referout`
+
+[2018-05-24 09:53:07.177] [179491] [smart_refer_ubon] [MYSQL]
+SELECT TABLE_NAME, PARTITION_NAME, SUBPARTITION_NAME, PARTITION_METHOD, SUBPARTITION_METHOD, PARTITION_EXPRESSION, SUBPARTITION_EXPRESSION, PARTITION_DESCRIPTION, PARTITION_COMMENT, NODEGROUP, TABLESPACE_NAME FROM information_schema.PARTITIONS WHERE TABLE_SCHEMA LIKE 'smartrefer_db' AND NOT ISNULL(PARTITION_NAME) AND TABLE_NAME LIKE 'referout' ORDER BY TABLE_NAME, PARTITION_NAME, PARTITION_ORDINAL_POSITION, SUBPARTITION_ORDINAL_POSITION
+
+[2018-05-24 09:53:07.208] [179491] [smart_refer_ubon] [MYSQL]
+SHOW FULL COLUMNS FROM `referout`
+
+[2018-05-24 09:53:07.239] [179491] [smart_refer_ubon] [MYSQL]
+SHOW CREATE TABLE `referout`
+
+[2018-05-24 09:53:07.270] [179491] [smart_refer_ubon] [MYSQL]
+SELECT * FROM `information_schema`.`columns` WHERE TABLE_NAME='referout' AND TABLE_SCHEMA='smartrefer_db'
+
+[2018-05-24 09:53:07.302] [179491] [smart_refer_ubon] [MYSQL]
+SHOW INDEX FROM `referout`
+
+[2018-05-24 09:53:07.333] [179491] [smart_refer_ubon] [MYSQL]
+SELECT trigger_name, event_manipulation, event_object_table, action_statement, action_timing, DEFINER FROM information_schema.triggers WHERE BINARY event_object_schema='smartrefer_db' AND BINARY event_object_table='referout'
+
+[2018-05-24 09:53:07.380] [179491] [smart_refer_ubon] [MYSQL]
+SHOW CREATE TABLE `referout`
+
+[2018-05-24 10:00:01.292] [000066] [localhost] [MYSQL]
+SELECT @@character_set_database, @@collation_database
+
+[2018-05-24 10:00:01.338] [000066] [localhost] [MYSQL]
+SHOW FULL TABLES WHERE Table_type != 'VIEW'
+
+[2018-05-24 10:00:35.338] [000067] [localhost] [MYSQL]
+SET PROFILING=1;
+
+[2018-05-24 10:00:35.338] [000067] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:00:35.353] [000067] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:00:35.369] [000067] [localhost] [MYSQL]
+SELECT DISTINCT '10953' AS HOSPCODE,
+cid_hn.HN AS PID,  
+opd_visits.VISIT_ID as SEQ,  
+DATE_FORMAT(opd_visits.REG_DATETIME,'%Y%m%d') AS DATE_SERV,
+opd_visits.STAFF_ID AS NUTRITIONPLACE,
+FORMAT(opd_visits.WEIGHT,1) AS WEIGHT,
+opd_visits.HEIGHT AS HEIGHT,
+'' AS HEADCIRCUM,
+'' AS CHILDDEVELOP,
+'' AS FOOD,
+'' AS BOTTLE,
+'' AS PROVIDER,
+DATE_FORMAT(NOW(),'%Y%m%d%H%i%s') AS D_UPDATE
+FROM 
+	population 
+	INNER JOIN cid_hn ON population.CID = cid_hn.CID 
+	INNER JOIN opd_visits ON cid_hn.hn = opd_visits.HN
+	INNER JOIN opd_operations ON opd_operations.VISIT_ID = opd_visits.VISIT_ID
+	INNER JOIN icd9cm ON opd_operations.ICD9_ID = icd9cm.ICD9_ID
+	inner join opd_diagnosis on opd_visits.visit_id = opd_diagnosis.VISIT_ID and opd_diagnosis.DXT_ID='1'
+
+WHERE 
+1 = 1	
+	AND LEFT( population.cid, 5 ) > 00000 
+  AND opd_visits.reg_datetime BETWEEN '2014.01.01 00:00' AND '2014.01.31 23:59' 
+  AND opd_visits.is_cancel = 0
+	AND FLOOR(DATEDIFF(NOW(),population.BIRTHDATE)/365.25) >=0 AND FLOOR(DATEDIFF(NOW(),population.BIRTHDATE)/365.25) <6
+	AND opd_visits.visit_id NOT IN( SELECT visit_id FROM ipd_reg )
+ORDER BY population.CID;
+
+[2018-05-24 10:00:35.369] [000067] [localhost] [MYSQL]
+1146 - Table 'dhdc.population' doesn't exist
+
+[2018-05-24 10:00:35.400] [000068] [localhost] [MYSQL]
+SHOW FULL TABLES FROM `dhdc` WHERE Table_type != 'VIEW'
+
+[2018-05-24 10:00:35.432] [000068] [localhost] [MYSQL]
+SHOW FULL TABLES FROM `dhdc` WHERE Table_type = 'VIEW'
+
+[2018-05-24 10:00:35.448] [000068] [localhost] [MYSQL]
+SHOW PROCEDURE STATUS WHERE Db='dhdc'
+
+[2018-05-24 10:00:35.448] [000068] [localhost] [MYSQL]
+SHOW FUNCTION STATUS WHERE Db='dhdc'
+
+[2018-05-24 10:01:14.179] [000063] [localhost] [MYSQL]
+SHOW CREATE TABLE `opd_visits`
+
+[2018-05-24 10:01:14.210] [000069] [localhost] [MYSQL]
+SELECT * FROM `opd_visits` LIMIT 0, 1000
+
+[2018-05-24 10:01:14.226] [000069] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`opd_visits`
+
+[2018-05-24 10:01:51.870] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`opd_visits`
+
+[2018-05-24 10:02:36.040] [000064] [localhost] [MYSQL]
+SET PROFILING=1;
+
+[2018-05-24 10:02:36.040] [000064] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:02:36.040] [000064] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:02:36.056] [000064] [localhost] [MYSQL]
+#SET @vn = ?p0;
+SET @vn = '0001941388';
+
+[2018-05-24 10:02:36.056] [000064] [localhost] [MYSQL]
+SELECT
+gcoffice.offid  hcode
+, CONCAT(gcoffice.offid,'-3-',a.REFER_ID) refer_no
+, '1' refertype_id
+,DATE_FORMAT(a.RF_DT,'%Y%m%d')  refer_date
+,DATE_FORMAT(a.RF_DT,'%H%i') refer_time
+,CASE
+WHEN a.UNIT_ID IN ( 02,12,13,14,15,16,17,18,19,20,27) THEN '1'
+WHEN a.UNIT_ID = 11 THEN '3'
+WHEN a.UNIT_ID IN (38,39) THEN '2'
+WHEN a.UNIT_ID = 22 THEN '4'
+END AS  station_id
+,CASE
+WHEN a.UNIT_ID = 01 THEN '001'
+WHEN a.UNIT_ID = 02 THEN '002'
+WHEN a.UNIT_ID = 08 THEN '007'
+WHEN a.UNIT_ID = 11 THEN '023'
+WHEN a.UNIT_ID = 26  THEN '015'
+WHEN a.UNIT_ID = 22 THEN '036'
+WHEN a.UNIT_ID IN (38,39) THEN '026'
+WHEN a.UNIT_ID IN (03,04,05) THEN '004'
+WHEN a.UNIT_ID =31 THEN '013'
+WHEN a.UNIT_ID IN (12,13,14,15,16,17,18,19,20,27) THEN '020'
+END AS location_id
+,v.HN  pid
+,c.CID cid
+,v.HN hn
+, i.ADM_ID an
+,a.VISIT_ID vn
+,CASE 
+	WHEN PRENAME not in('') THEN PRENAME
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 < '20' AND sex='1' AND MARRIAGE = '4'THEN 'สามเณร'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 >= '20' AND sex='1' AND MARRIAGE = '4'THEN 'พระภิกษุ'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 < '15'  AND sex='1' THEN 'เด็กชาย'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 >= '15' AND sex='1' THEN 'นาย'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 < '15'  AND sex='2' THEN 'เด็กหญิง'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 >= '15' AND sex='2' AND MARRIAGE='1' THEN 'นางสาว'
+ELSE 'นาง'
+END AS pname
+, p.FNAME fname
+, p.LNAME lname
+,CONCAT(timestampdiff(year,p.BIRTHDATE,a.RF_DT) ,'-',timestampdiff(month,p.BIRTHDATE,a.RF_DT)-(timestampdiff(year,p.BIRTHDATE,a.RF_DT)*12) 
+,'-',timestampdiff(day,date_add(p.BIRTHDATE,interval (timestampdiff(month,p.BIRTHDATE,a.RF_DT)) month),a.RF_DT)) AS age
+,v.WEIGHT body_weight_kg
+,v.HEIGHT height_cm
+,'' bloodgroup
+,p.HOME_ADR addrpart
+,SUBSTR(p.TOWN_ID,7,2) moopart
+,SUBSTR(p.TOWN_ID,5,2) tmbpart
+,SUBSTR(p.TOWN_ID,3,2) amppart
+,SUBSTR(p.TOWN_ID,1,2) chwpart
+,CASE
+WHEN m.INSCL IN (03,04) THEN '89'
+END AS pttype_id
+,u.UC_CARDID pttypeno
+,u.HOSPMAIN  hospmain
+,u.HOSPSUB hospsub
+,'' typept_id
+,'' strength_id
+, a.STAFF_ID doctor_id
+,'' refer_hospcode
+, '' cause_referout_id
+,'' expire_date
+,'' loads_id
+,'' is_coordinate_doctor
+,'' is_coordinate_nurse
+,'' coordinate_id
+,'' is_coordinate_result
+,'' hospcode_deny_complete
+,'' is_upload
+,'' is_download
+,'' is_receive
+,'' is_cancel
+,'' is_referboard
+,'' is_deny
+,'' refer_type
+,'' refer_station_id
+,'' diag_text
+,'' serviceplan_id
+,'' caretype_id
+,'' refer_result
+,'' is_appoint
+,'' is_refer_result
+,'' is_send_back
+,'' is_send_pack
+,'' is_care_plan
+FROM gcoffice, refers a
+LEFT JOIN opd_visits v ON a.VISIT_ID = v.VISIT_ID AND v.IS_CANCEL = 0
+LEFT JOIN cid_hn c ON v.HN = c.HN 
+LEFT JOIN population p ON c.CID = p.CID
+LEFT JOIN ipd_reg i ON v.VISIT_ID = i.VISIT_ID AND i.IS_CANCEL = 0
+LEFT JOIN uc_inscl u ON p.CID = u.CID AND u.DATE_ABORT = 0
+LEFT JOIN main_inscls m ON v.INSCL = m.INSCL
+WHERE  a.RF_TYPE= 2
+AND a.VISIT_ID = @vn
+
+[2018-05-24 10:02:36.134] [000064] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:02:36.150] [000064] [localhost] [MYSQL]
+SELECT QUERY_ID, SUM(DURATION) AS SUM_DURATION FROM INFORMATION_SCHEMA.PROFILING GROUP BY QUERY_ID;
+
+[2018-05-24 10:02:36.150] [000064] [localhost] [MYSQL]
+SELECT STATE AS `Status`, ROUND(SUM(DURATION),7) AS `Duration`, CONCAT(ROUND(SUM(DURATION)/0.068094*100,3), '%') AS `Percentage` FROM INFORMATION_SCHEMA.PROFILING WHERE QUERY_ID=12 GROUP BY STATE;
+
+[2018-05-24 10:03:21.015] [000063] [localhost] [MYSQL]
+SHOW CREATE TABLE `population`
+
+[2018-05-24 10:03:21.062] [000070] [localhost] [MYSQL]
+SELECT * FROM `population` LIMIT 0, 1000
+
+[2018-05-24 10:03:21.078] [000070] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`population`
+
+[2018-05-24 10:04:00.815] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`population`
+
+[2018-05-24 10:04:05.847] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`gcoffice`
+
+[2018-05-24 10:04:05.863] [000063] [localhost] [MYSQL]
 SHOW COLUMNS FROM `mbase_data`.`refers`
+
+[2018-05-24 10:04:05.863] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`cid_hn`
+
+[2018-05-24 10:04:05.863] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`ipd_reg`
+
+[2018-05-24 10:04:05.863] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`uc_inscl`
+
+[2018-05-24 10:04:05.878] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`main_inscls`
+
+[2018-05-24 10:04:11.123] [000064] [localhost] [MYSQL]
+SET PROFILING=1;
+
+[2018-05-24 10:04:11.123] [000064] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:04:11.123] [000064] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:04:11.139] [000064] [localhost] [MYSQL]
+#SET @vn = ?p0;
+SET @vn = '0001941388';
+
+[2018-05-24 10:04:11.139] [000064] [localhost] [MYSQL]
+SELECT
+gcoffice.offid  hcode
+, CONCAT(gcoffice.offid,'-3-',a.REFER_ID) refer_no
+, '1' refertype_id
+,DATE_FORMAT(a.RF_DT,'%Y%m%d')  refer_date
+,DATE_FORMAT(a.RF_DT,'%H%i') refer_time
+,CASE
+WHEN a.UNIT_ID IN ( 02,12,13,14,15,16,17,18,19,20,27) THEN '1'
+WHEN a.UNIT_ID = 11 THEN '3'
+WHEN a.UNIT_ID IN (38,39) THEN '2'
+WHEN a.UNIT_ID = 22 THEN '4'
+END AS  station_id
+,CASE
+WHEN a.UNIT_ID = 01 THEN '001'
+WHEN a.UNIT_ID = 02 THEN '002'
+WHEN a.UNIT_ID = 08 THEN '007'
+WHEN a.UNIT_ID = 11 THEN '023'
+WHEN a.UNIT_ID = 26  THEN '015'
+WHEN a.UNIT_ID = 22 THEN '036'
+WHEN a.UNIT_ID IN (38,39) THEN '026'
+WHEN a.UNIT_ID IN (03,04,05) THEN '004'
+WHEN a.UNIT_ID =31 THEN '013'
+WHEN a.UNIT_ID IN (12,13,14,15,16,17,18,19,20,27) THEN '020'
+END AS location_id
+,v.HN  pid
+,c.CID cid
+,v.HN hn
+, i.ADM_ID an
+,a.VISIT_ID vn
+,CASE 
+	WHEN PRENAME not in('') THEN PRENAME
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 < '20' AND sex='1' AND MARRIAGE = '4'THEN 'สามเณร'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 >= '20' AND sex='1' AND MARRIAGE = '4'THEN 'พระภิกษุ'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 < '15'  AND sex='1' THEN 'เด็กชาย'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 >= '15' AND sex='1' THEN 'นาย'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 < '15'  AND sex='2' THEN 'เด็กหญิง'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 >= '15' AND sex='2' AND MARRIAGE='1' THEN 'นางสาว'
+ELSE 'นาง'
+END AS pname
+, p.FNAME fname
+, p.LNAME lname
+,CONCAT(timestampdiff(year,p.BIRTHDATE,a.RF_DT) ,'-',timestampdiff(month,p.BIRTHDATE,a.RF_DT)-(timestampdiff(year,p.BIRTHDATE,a.RF_DT)*12) 
+,'-',timestampdiff(day,date_add(p.BIRTHDATE,interval (timestampdiff(month,p.BIRTHDATE,a.RF_DT)) month),a.RF_DT)) AS age
+,v.WEIGHT body_weight_kg
+,v.HEIGHT height_cm
+,p.bl_group  bloodgroup
+,p.HOME_ADR addrpart
+,SUBSTR(p.TOWN_ID,7,2) moopart
+,SUBSTR(p.TOWN_ID,5,2) tmbpart
+,SUBSTR(p.TOWN_ID,3,2) amppart
+,SUBSTR(p.TOWN_ID,1,2) chwpart
+,CASE
+WHEN m.INSCL IN (03,04) THEN '89'
+END AS pttype_id
+,u.UC_CARDID pttypeno
+,u.HOSPMAIN  hospmain
+,u.HOSPSUB hospsub
+,'' typept_id
+,'' strength_id
+, a.STAFF_ID doctor_id
+,'' refer_hospcode
+, '' cause_referout_id
+,'' expire_date
+,'' loads_id
+,'' is_coordinate_doctor
+,'' is_coordinate_nurse
+,'' coordinate_id
+,'' is_coordinate_result
+,'' hospcode_deny_complete
+,'' is_upload
+,'' is_download
+,'' is_receive
+,'' is_cancel
+,'' is_referboard
+,'' is_deny
+,'' refer_type
+,'' refer_station_id
+,'' diag_text
+,'' serviceplan_id
+,'' caretype_id
+,'' refer_result
+,'' is_appoint
+,'' is_refer_result
+,'' is_send_back
+,'' is_send_pack
+,'' is_care_plan
+FROM gcoffice, refers a
+LEFT JOIN opd_visits v ON a.VISIT_ID = v.VISIT_ID AND v.IS_CANCEL = 0
+LEFT JOIN cid_hn c ON v.HN = c.HN 
+LEFT JOIN population p ON c.CID = p.CID
+LEFT JOIN ipd_reg i ON v.VISIT_ID = i.VISIT_ID AND i.IS_CANCEL = 0
+LEFT JOIN uc_inscl u ON p.CID = u.CID AND u.DATE_ABORT = 0
+LEFT JOIN main_inscls m ON v.INSCL = m.INSCL
+WHERE  a.RF_TYPE= 2
+AND a.VISIT_ID = @vn
+
+[2018-05-24 10:04:11.217] [000064] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:04:11.217] [000064] [localhost] [MYSQL]
+SELECT QUERY_ID, SUM(DURATION) AS SUM_DURATION FROM INFORMATION_SCHEMA.PROFILING GROUP BY QUERY_ID;
+
+[2018-05-24 10:04:11.217] [000064] [localhost] [MYSQL]
+SELECT STATE AS `Status`, ROUND(SUM(DURATION),7) AS `Duration`, CONCAT(ROUND(SUM(DURATION)/0.063066*100,3), '%') AS `Percentage` FROM INFORMATION_SCHEMA.PROFILING WHERE QUERY_ID=20 GROUP BY STATE;
+
+[2018-05-24 10:07:04.416] [000072] [localhost] [MYSQL]
+SHOW FULL TABLES FROM `mbase_data` WHERE Table_type != 'VIEW'
+
+[2018-05-24 10:07:04.479] [000072] [localhost] [MYSQL]
+SHOW FULL TABLES FROM `mbase_data` WHERE Table_type = 'VIEW'
+
+[2018-05-24 10:07:04.510] [000072] [localhost] [MYSQL]
+SHOW PROCEDURE STATUS WHERE Db='mbase_data'
+
+[2018-05-24 10:07:04.510] [000072] [localhost] [MYSQL]
+SHOW FUNCTION STATUS WHERE Db='mbase_data'
+
+[2018-05-24 10:07:33.617] [000071] [localhost] [MYSQL]
+SET PROFILING=1;
+
+[2018-05-24 10:07:33.617] [000071] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:07:33.617] [000071] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:07:33.633] [000071] [localhost] [MYSQL]
+#SET @vn = ?p0;
+SET @vn = '0001909085';
+
+[2018-05-24 10:07:33.648] [000071] [localhost] [MYSQL]
+SELECT
+ gcoffice.offid  AS hcode, CONCAT(gcoffice.offid,'-3-', a.refer_id) referback_no
+,' ' referback_no_his
+,DATE_FORMAT(a.RF_DT,'%Y%m%d')  refer_date
+, DATE_FORMAT(a.RF_DT,'%H%i') refer_time
+, p.CID cid,
+CASE 
+	WHEN PRENAME not in('') THEN PRENAME
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 < '20' AND sex='1' AND MARRIAGE = '4'THEN 'สามเณร'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 >= '20' AND sex='1' AND MARRIAGE = '4'THEN 'พระภิกษุ'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 < '15'  AND sex='1' THEN 'เด็กชาย'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 >= '15' AND sex='1' THEN 'นาย'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 < '15'  AND sex='2' THEN 'เด็กหญิง'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 >= '15' AND sex='2' AND MARRIAGE='1' THEN 'นางสาว'
+ELSE 'นาง'
+END AS pname
+,p.FNAME fname
+,p.LNAME lname
+,CONCAT(timestampdiff(year,p.BIRTHDATE,a.RF_DT) ,'-',timestampdiff(month,p.BIRTHDATE,a.RF_DT)-(timestampdiff(year,p.BIRTHDATE,a.RF_DT)*12) 
+,'-',timestampdiff(day,date_add(p.BIRTHDATE,interval (timestampdiff(month,p.BIRTHDATE,a.RF_DT)) month),a.RF_DT)) AS age
+,p.HOME_ADR addrpart
+,substr(p.TOWN_ID,7,2) moopart
+,substr(p.TOWN_ID,5,2) tmbpart
+,substr(p.TOWN_ID,3,2)  amppart
+,substr(p.TOWN_ID,1,2) chwpart
+,CASE
+WHEN m.INSCL IN (03,04) THEN '89'
+END AS pttype_id
+,u.UC_CARDID  pttypeno
+,'' loads_id
+,a.STAFF_ID doctor_id
+,'' refer_hospcode
+, '' eye_opening
+,'' verbal_response
+,'' motor_response
+,'' pupil
+,'' cause_referback_id
+, '' diag_text
+,' ' referback_result
+, '' is_upload
+, '' is_download
+, '' is_receive
+,'' hn
+,'' station_ID
+,'' location_ID
+,'' word_call_man
+,'' word_call_status
+,'' refercenter_receive_doc
+,'' refercenter_receive_date
+,'' refercenter_receive_time
+,'' refercenter_receive_man
+,'' refercenter_receive_status
+,'' end_refercenter_result
+,'' end_refercenter_transport
+,'' end_refercenter_date
+,'' end_refercenter_time
+,'' end_refercenter_man
+,'' end_refercenter_status
+,'' receive_patient_back_date
+,'' receive_patient_back_time
+,'' receive_patient_back_man
+,'' receive_patient_back_status
+,'' is_send_pacs
+FROM  gcoffice , refers a
+LEFT JOIN opd_visits v ON a.VISIT_ID = v.VISIT_ID AND v.IS_CANCEL = 0
+INNER JOIN cid_hn c ON v.HN = c.HN
+LEFT JOIN population p ON c.CID = p.CID
+LEFT JOIN service_units s ON a.UNIT_ID = s.UNIT_ID
+LEFT JOIN uc_inscl u ON p.CID = u.CID AND u.DATE_ABORT =0
+LEFT JOIN main_inscls m ON v.INSCL = m.INSCL
+WHERE 
+a.VISIT_ID = @vn
+AND a.RF_TYPE = 1
+AND LEFT(a.HOSP_ID,3) NOT IN ( 037,036)
+AND a.HOSP_ID NOT IN  (10953, 99809)
+
+[2018-05-24 10:07:33.758] [000071] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:07:33.758] [000071] [localhost] [MYSQL]
+SELECT QUERY_ID, SUM(DURATION) AS SUM_DURATION FROM INFORMATION_SCHEMA.PROFILING GROUP BY QUERY_ID;
+
+[2018-05-24 10:07:33.758] [000071] [localhost] [MYSQL]
+SELECT STATE AS `Status`, ROUND(SUM(DURATION),7) AS `Duration`, CONCAT(ROUND(SUM(DURATION)/0.084666*100,3), '%') AS `Percentage` FROM INFORMATION_SCHEMA.PROFILING WHERE QUERY_ID=4 GROUP BY STATE;
+
+[2018-05-24 10:08:23.533] [179491] [smart_refer_ubon] [MYSQL]
+SHOW ENGINES
+
+[2018-05-24 10:08:23.533] [179491] [smart_refer_ubon] [MYSQL]
+2013 - Lost connection to MySQL server during query
+
+[2018-05-24 10:08:23.689] [179530] [smart_refer_ubon] [MYSQL]
+SHOW ENGINES
+
+[2018-05-24 10:08:23.751] [179530] [smart_refer_ubon] [MYSQL]
+SHOW TABLE STATUS LIKE 'referback'
+
+[2018-05-24 10:08:23.799] [179530] [smart_refer_ubon] [MYSQL]
+SHOW CREATE TABLE `referback`
+
+[2018-05-24 10:08:23.845] [179530] [smart_refer_ubon] [MYSQL]
+SELECT TABLE_NAME, PARTITION_NAME, SUBPARTITION_NAME, PARTITION_METHOD, SUBPARTITION_METHOD, PARTITION_EXPRESSION, SUBPARTITION_EXPRESSION, PARTITION_DESCRIPTION, PARTITION_COMMENT, NODEGROUP, TABLESPACE_NAME FROM information_schema.PARTITIONS WHERE TABLE_SCHEMA LIKE 'smartrefer_db' AND NOT ISNULL(PARTITION_NAME) AND TABLE_NAME LIKE 'referback' ORDER BY TABLE_NAME, PARTITION_NAME, PARTITION_ORDINAL_POSITION, SUBPARTITION_ORDINAL_POSITION
+
+[2018-05-24 10:08:23.877] [179530] [smart_refer_ubon] [MYSQL]
+SHOW FULL COLUMNS FROM `referback`
+
+[2018-05-24 10:08:23.924] [179530] [smart_refer_ubon] [MYSQL]
+SHOW CREATE TABLE `referback`
+
+[2018-05-24 10:08:23.955] [179530] [smart_refer_ubon] [MYSQL]
+SELECT * FROM `information_schema`.`columns` WHERE TABLE_NAME='referback' AND TABLE_SCHEMA='smartrefer_db'
+
+[2018-05-24 10:08:23.986] [179530] [smart_refer_ubon] [MYSQL]
+SHOW INDEX FROM `referback`
+
+[2018-05-24 10:08:24.033] [179530] [smart_refer_ubon] [MYSQL]
+SELECT trigger_name, event_manipulation, event_object_table, action_statement, action_timing, DEFINER FROM information_schema.triggers WHERE BINARY event_object_schema='smartrefer_db' AND BINARY event_object_table='referback'
+
+[2018-05-24 10:08:24.064] [179530] [smart_refer_ubon] [MYSQL]
+SHOW CREATE TABLE `referback`
+
+[2018-05-24 10:09:16.292] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`opd_visits`
+
+[2018-05-24 10:09:48.894] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`gcoffice`
+
+[2018-05-24 10:09:48.926] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`refers`
+
+[2018-05-24 10:09:48.941] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`cid_hn`
+
+[2018-05-24 10:09:48.941] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`population`
+
+[2018-05-24 10:09:48.957] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`service_units`
+
+[2018-05-24 10:09:48.957] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`uc_inscl`
+
+[2018-05-24 10:09:48.957] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`main_inscls`
+
+[2018-05-24 10:10:08.438] [000071] [localhost] [MYSQL]
+SET PROFILING=1;
+
+[2018-05-24 10:10:08.438] [000071] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:10:08.438] [000071] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:10:08.438] [000071] [localhost] [MYSQL]
+#SET @vn = ?p0;
+SET @vn = '0001909085';
+
+[2018-05-24 10:10:08.453] [000071] [localhost] [MYSQL]
+SELECT
+ gcoffice.offid  AS hcode, CONCAT(gcoffice.offid,'-3-', a.refer_id) referback_no
+,' ' referback_no_his
+,DATE_FORMAT(a.RF_DT,'%Y%m%d')  refer_date
+, DATE_FORMAT(a.RF_DT,'%H%i') refer_time
+, p.CID cid,
+CASE 
+	WHEN PRENAME not in('') THEN PRENAME
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 < '20' AND sex='1' AND MARRIAGE = '4'THEN 'สามเณร'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 >= '20' AND sex='1' AND MARRIAGE = '4'THEN 'พระภิกษุ'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 < '15'  AND sex='1' THEN 'เด็กชาย'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 >= '15' AND sex='1' THEN 'นาย'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 < '15'  AND sex='2' THEN 'เด็กหญิง'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 >= '15' AND sex='2' AND MARRIAGE='1' THEN 'นางสาว'
+ELSE 'นาง'
+END AS pname
+,p.FNAME fname
+,p.LNAME lname
+,CONCAT(timestampdiff(year,p.BIRTHDATE,a.RF_DT) ,'-',timestampdiff(month,p.BIRTHDATE,a.RF_DT)-(timestampdiff(year,p.BIRTHDATE,a.RF_DT)*12) 
+,'-',timestampdiff(day,date_add(p.BIRTHDATE,interval (timestampdiff(month,p.BIRTHDATE,a.RF_DT)) month),a.RF_DT)) AS age
+,v.WEIGHT  as body_weight_kg
+,v.HEIGHT as height_cm
+,p.bl_group as  bloodgroup
+,p.HOME_ADR addrpart
+,substr(p.TOWN_ID,7,2) moopart
+,substr(p.TOWN_ID,5,2) tmbpart
+,substr(p.TOWN_ID,3,2)  amppart
+,substr(p.TOWN_ID,1,2) chwpart
+,CASE
+WHEN m.INSCL IN (03,04) THEN '89'
+END AS pttype_id
+,u.UC_CARDID  pttypeno
+,'' loads_id
+,a.STAFF_ID doctor_id
+,'' refer_hospcode
+, '' eye_opening
+,'' verbal_response
+,'' motor_response
+,'' pupil
+,'' cause_referback_id
+, '' diag_text
+,' ' referback_result
+, '' is_upload
+, '' is_download
+, '' is_receive
+,'' hn
+,'' station_ID
+,'' location_ID
+,'' word_call_man
+,'' word_call_status
+,'' refercenter_receive_doc
+,'' refercenter_receive_date
+,'' refercenter_receive_time
+,'' refercenter_receive_man
+,'' refercenter_receive_status
+,'' end_refercenter_result
+,'' end_refercenter_transport
+,'' end_refercenter_date
+,'' end_refercenter_time
+,'' end_refercenter_man
+,'' end_refercenter_status
+,'' receive_patient_back_date
+,'' receive_patient_back_time
+,'' receive_patient_back_man
+,'' receive_patient_back_status
+,'' is_send_pacs
+FROM  gcoffice , refers a
+LEFT JOIN opd_visits v ON a.VISIT_ID = v.VISIT_ID AND v.IS_CANCEL = 0
+INNER JOIN cid_hn c ON v.HN = c.HN
+LEFT JOIN population p ON c.CID = p.CID
+LEFT JOIN service_units s ON a.UNIT_ID = s.UNIT_ID
+LEFT JOIN uc_inscl u ON p.CID = u.CID AND u.DATE_ABORT =0
+LEFT JOIN main_inscls m ON v.INSCL = m.INSCL
+WHERE 
+a.VISIT_ID = @vn
+AND a.RF_TYPE = 1
+AND LEFT(a.HOSP_ID,3) NOT IN ( 037,036)
+AND a.HOSP_ID NOT IN  (10953, 99809)
+
+[2018-05-24 10:10:08.531] [000071] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:10:08.531] [000071] [localhost] [MYSQL]
+SELECT QUERY_ID, SUM(DURATION) AS SUM_DURATION FROM INFORMATION_SCHEMA.PROFILING GROUP BY QUERY_ID;
+
+[2018-05-24 10:10:08.531] [000071] [localhost] [MYSQL]
+SELECT STATE AS `Status`, ROUND(SUM(DURATION),7) AS `Duration`, CONCAT(ROUND(SUM(DURATION)/0.062582*100,3), '%') AS `Percentage` FROM INFORMATION_SCHEMA.PROFILING WHERE QUERY_ID=12 GROUP BY STATE;
+
+[2018-05-24 10:10:31.946] [000063] [localhost] [MYSQL]
+SHOW CREATE TABLE `opd_visits`
+
+[2018-05-24 10:10:31.993] [000073] [localhost] [MYSQL]
+SELECT * FROM `opd_visits` LIMIT 0, 1000
+
+[2018-05-24 10:10:31.993] [000073] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`opd_visits`
+
+[2018-05-24 10:10:35.824] [000073] [localhost] [MYSQL]
+SELECT COUNT(1) FROM `opd_visits`
+
+[2018-05-24 10:10:36.558] [000073] [localhost] [MYSQL]
+SELECT * FROM `opd_visits` LIMIT 1815000, 1000
+
+[2018-05-24 10:10:41.496] [000073] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`opd_visits`
+
+[2018-05-24 10:11:16.173] [000071] [localhost] [MYSQL]
+SET PROFILING=1;
+
+[2018-05-24 10:11:16.173] [000071] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:11:16.173] [000071] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:11:16.189] [000071] [localhost] [MYSQL]
+#SET @vn = ?p0;
+SET @vn = '0001909085';
+
+[2018-05-24 10:11:16.189] [000071] [localhost] [MYSQL]
+SELECT
+ gcoffice.offid  AS hcode, CONCAT(gcoffice.offid,'-3-', a.refer_id) referback_no
+,' ' referback_no_his
+,DATE_FORMAT(a.RF_DT,'%Y%m%d')  refer_date
+, DATE_FORMAT(a.RF_DT,'%H%i') refer_time
+, p.CID cid,
+CASE 
+	WHEN PRENAME not in('') THEN PRENAME
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 < '20' AND sex='1' AND MARRIAGE = '4'THEN 'สามเณร'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 >= '20' AND sex='1' AND MARRIAGE = '4'THEN 'พระภิกษุ'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 < '15'  AND sex='1' THEN 'เด็กชาย'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 >= '15' AND sex='1' THEN 'นาย'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 < '15'  AND sex='2' THEN 'เด็กหญิง'
+	WHEN DATEDIFF(now(),BIRTHDATE)/365.25 >= '15' AND sex='2' AND MARRIAGE='1' THEN 'นางสาว'
+ELSE 'นาง'
+END AS pname
+,p.FNAME fname
+,p.LNAME lname
+,CONCAT(timestampdiff(year,p.BIRTHDATE,a.RF_DT) ,'-',timestampdiff(month,p.BIRTHDATE,a.RF_DT)-(timestampdiff(year,p.BIRTHDATE,a.RF_DT)*12) 
+,'-',timestampdiff(day,date_add(p.BIRTHDATE,interval (timestampdiff(month,p.BIRTHDATE,a.RF_DT)) month),a.RF_DT)) AS age
+,v.WEIGHT  as body_weight_kg
+,v.HEIGHT as height_cm
+,p.bl_group as  bloodgroup
+,p.HOME_ADR addrpart
+,substr(p.TOWN_ID,7,2) moopart
+,substr(p.TOWN_ID,5,2) tmbpart
+,substr(p.TOWN_ID,3,2)  amppart
+,substr(p.TOWN_ID,1,2) chwpart
+,CASE
+WHEN m.INSCL IN (03,04) THEN '89'
+END AS pttype_id
+,u.UC_CARDID  pttypeno
+,'' loads_id
+,a.STAFF_ID doctor_id
+,'' refer_hospcode
+, '' eye_opening
+,'' verbal_response
+,'' motor_response
+,'' pupil
+,'' cause_referback_id
+, '' diag_text
+,' ' referback_result
+, '' is_upload
+, '' is_download
+, '' is_receive
+,'' hn
+,'' station_ID
+,'' location_ID
+,'' word_call_man
+,'' word_call_status
+,'' refercenter_receive_doc
+,'' refercenter_receive_date
+,'' refercenter_receive_time
+,'' refercenter_receive_man
+,'' refercenter_receive_status
+,'' end_refercenter_result
+,'' end_refercenter_transport
+,'' end_refercenter_date
+,'' end_refercenter_time
+,'' end_refercenter_man
+,'' end_refercenter_status
+,'' receive_patient_back_date
+,'' receive_patient_back_time
+,'' receive_patient_back_man
+,'' receive_patient_back_status
+,'' is_send_pacs
+FROM  gcoffice , refers a
+LEFT JOIN opd_visits v ON a.VISIT_ID = v.VISIT_ID AND v.IS_CANCEL = 0
+INNER JOIN cid_hn c ON v.HN = c.HN
+LEFT JOIN population p ON c.CID = p.CID
+LEFT JOIN service_units s ON a.UNIT_ID = s.UNIT_ID
+LEFT JOIN uc_inscl u ON p.CID = u.CID AND u.DATE_ABORT =0
+LEFT JOIN main_inscls m ON v.INSCL = m.INSCL
+WHERE 
+a.VISIT_ID = @vn
+AND a.RF_TYPE = 1
+AND LEFT(a.HOSP_ID,3) NOT IN ( 037,036)
+AND a.HOSP_ID NOT IN  (10953, 99809)
+
+[2018-05-24 10:11:16.851] [000071] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:11:16.851] [000071] [localhost] [MYSQL]
+SELECT QUERY_ID, SUM(DURATION) AS SUM_DURATION FROM INFORMATION_SCHEMA.PROFILING GROUP BY QUERY_ID;
+
+[2018-05-24 10:11:16.851] [000071] [localhost] [MYSQL]
+SELECT STATE AS `Status`, ROUND(SUM(DURATION),7) AS `Duration`, CONCAT(ROUND(SUM(DURATION)/0.648398*100,3), '%') AS `Percentage` FROM INFORMATION_SCHEMA.PROFILING WHERE QUERY_ID=20 GROUP BY STATE;
+
+[2018-05-24 10:21:06.564] [000075] [localhost] [MYSQL]
+SHOW FULL TABLES FROM `mbase_data` WHERE Table_type != 'VIEW'
+
+[2018-05-24 10:21:06.627] [000075] [localhost] [MYSQL]
+SHOW FULL TABLES FROM `mbase_data` WHERE Table_type = 'VIEW'
+
+[2018-05-24 10:21:06.658] [000075] [localhost] [MYSQL]
+SHOW PROCEDURE STATUS WHERE Db='mbase_data'
+
+[2018-05-24 10:21:06.658] [000075] [localhost] [MYSQL]
+SHOW FUNCTION STATUS WHERE Db='mbase_data'
+
+[2018-05-24 10:21:17.166] [000074] [localhost] [MYSQL]
+SET PROFILING=1;
+
+[2018-05-24 10:21:17.166] [000074] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:21:17.166] [000074] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:21:17.181] [000074] [localhost] [MYSQL]
+SET @vn = '0001907500';
+
+[2018-05-24 10:21:17.181] [000074] [localhost] [MYSQL]
+SET @vni = (select   visit_id FROM ipd_reg limit 1);
+
+[2018-05-24 10:21:17.197] [000074] [localhost] [MYSQL]
+SELECT DISTINCT
+gcoffice.offid AS hcode
+,CONCAT(gcoffice.offid,'-3-',a.REFER_ID) refer_no
+, a.VISIT_ID vn
+, c.HN hn
+,'' order_no
+,'' item_no
+,'' rxdate
+,'' rxtime
+,'' date_serv
+,CONCAT('01', v.UNIT_REG, a.UNIT_ID)  clinic
+,dr.DIDSTD didstd
+,dr.DRUG_NAME dname
+,b.RX_AMOUNT amount
+,dr.UUNIT_ID unit
+,d.UUNIT_NAME unit_packing
+,dp.price_1 drugprice
+,dr.PRICE drugcost
+,a.STAFF_ID  provider
+,CONCAT(TRIM(p.FNAME),' ',TRIM(p.LNAME) ) provider_name
+,s. LICENCE provider_licenseno
+,s.CID provider_cid
+,r.ROUTE_THAI drugusage_text
+FROM gcoffice, refers a
+INNER JOIN staff s ON a.STAFF_ID  = s.STAFF_ID
+INNER JOIN population p ON p.CID = s.CID
+INNER JOIN cid_hn c ON c.CID = p.CID
+INNER  JOIN opd_visits v ON a.VISIT_ID = v.VISIT_ID AND  v.IS_CANCEL = 0
+INNER JOIN prescriptions b ON v.visit_id = b.visit_id  AND b.IS_CANCEL = 0
+INNER JOIN drugs  dr ON b.drug_id = dr.drug_id 
+LEFT OUTER JOIN usage_units d ON dr.PACKAGE = d.UUNIT_ID
+INNER JOIN service_units sv ON sv.UNIT_ID = a.UNIT_ID
+INNER JOIN routes r ON r.ROUTE_ID = b.ROUTE_ID
+INNER JOIN drug_price dp ON dp.drug_id = dr.DRUG_ID 
+WHERE a.VISIT_ID =@vn
+AND v.VISIT_ID NOT IN (@vni)
+
+[2018-05-24 10:21:17.307] [000074] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:21:17.307] [000074] [localhost] [MYSQL]
+SELECT QUERY_ID, SUM(DURATION) AS SUM_DURATION FROM INFORMATION_SCHEMA.PROFILING GROUP BY QUERY_ID;
+
+[2018-05-24 10:21:17.307] [000074] [localhost] [MYSQL]
+SELECT STATE AS `Status`, ROUND(SUM(DURATION),7) AS `Duration`, CONCAT(ROUND(SUM(DURATION)/0.093486*100,3), '%') AS `Percentage` FROM INFORMATION_SCHEMA.PROFILING WHERE QUERY_ID=5 GROUP BY STATE;
+
+[2018-05-24 10:23:19.852] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`gcoffice`
+
+[2018-05-24 10:23:19.852] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`refers`
+
+[2018-05-24 10:23:19.867] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`staff`
+
+[2018-05-24 10:23:19.883] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`population`
+
+[2018-05-24 10:23:19.883] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`cid_hn`
+
+[2018-05-24 10:23:19.883] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`opd_visits`
+
+[2018-05-24 10:23:19.899] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`prescriptions`
+
+[2018-05-24 10:23:19.899] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`drugs`
+
+[2018-05-24 10:23:19.899] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`usage_units`
+
+[2018-05-24 10:23:19.899] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`service_units`
+
+[2018-05-24 10:23:19.916] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`routes`
+
+[2018-05-24 10:23:19.918] [000063] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`drug_price`
+
+[2018-05-24 10:23:59.955] [000074] [localhost] [MYSQL]
+SET PROFILING=1;
+
+[2018-05-24 10:23:59.955] [000074] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:23:59.955] [000074] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:23:59.955] [000074] [localhost] [MYSQL]
+SET @vn = '0001907500';
+
+[2018-05-24 10:23:59.971] [000074] [localhost] [MYSQL]
+SET @vni = (select   visit_id FROM ipd_reg limit 1);
+
+[2018-05-24 10:23:59.986] [000074] [localhost] [MYSQL]
+SELECT DISTINCT
+gcoffice.offid AS hcode
+,CONCAT(gcoffice.offid,'-3-',a.REFER_ID) refer_no
+, a.VISIT_ID vn
+, c.HN hn
+,'' order_no
+,'' item_no
+,'' rxdate
+,'' rxtime
+,date_format(v.REG_DATETIME,'%y%m%d') date_serv
+,CONCAT('01', v.UNIT_REG, a.UNIT_ID)  clinic
+,dr.DIDSTD didstd
+,dr.DRUG_NAME dname
+,b.RX_AMOUNT amount
+,dr.UUNIT_ID unit
+,d.UUNIT_NAME unit_packing
+,dp.price_1 drugprice
+,dr.PRICE drugcost
+,a.STAFF_ID  provider
+,CONCAT(TRIM(p.FNAME),' ',TRIM(p.LNAME) ) provider_name
+,s. LICENCE provider_licenseno
+,s.CID provider_cid
+,r.ROUTE_THAI drugusage_text
+FROM gcoffice, refers a
+INNER JOIN staff s ON a.STAFF_ID  = s.STAFF_ID
+INNER JOIN population p ON p.CID = s.CID
+INNER JOIN cid_hn c ON c.CID = p.CID
+INNER  JOIN opd_visits v ON a.VISIT_ID = v.VISIT_ID AND  v.IS_CANCEL = 0
+INNER JOIN prescriptions b ON v.visit_id = b.visit_id  AND b.IS_CANCEL = 0
+INNER JOIN drugs  dr ON b.drug_id = dr.drug_id 
+LEFT OUTER JOIN usage_units d ON dr.PACKAGE = d.UUNIT_ID
+INNER JOIN service_units sv ON sv.UNIT_ID = a.UNIT_ID
+INNER JOIN routes r ON r.ROUTE_ID = b.ROUTE_ID
+INNER JOIN drug_price dp ON dp.drug_id = dr.DRUG_ID 
+WHERE a.VISIT_ID =@vn
+AND v.VISIT_ID NOT IN (@vni)
+
+[2018-05-24 10:24:00.064] [000074] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:24:00.064] [000074] [localhost] [MYSQL]
+SELECT QUERY_ID, SUM(DURATION) AS SUM_DURATION FROM INFORMATION_SCHEMA.PROFILING GROUP BY QUERY_ID;
+
+[2018-05-24 10:24:00.064] [000074] [localhost] [MYSQL]
+SELECT STATE AS `Status`, ROUND(SUM(DURATION),7) AS `Duration`, CONCAT(ROUND(SUM(DURATION)/0.072871*100,3), '%') AS `Percentage` FROM INFORMATION_SCHEMA.PROFILING WHERE QUERY_ID=14 GROUP BY STATE;
+
+[2018-05-24 10:25:58.178] [000077] [localhost] [MYSQL]
+SHOW FULL TABLES FROM `mbase_data` WHERE Table_type != 'VIEW'
+
+[2018-05-24 10:25:58.288] [000077] [localhost] [MYSQL]
+SHOW FULL TABLES FROM `mbase_data` WHERE Table_type = 'VIEW'
+
+[2018-05-24 10:25:58.334] [000077] [localhost] [MYSQL]
+SHOW PROCEDURE STATUS WHERE Db='mbase_data'
+
+[2018-05-24 10:25:58.366] [000077] [localhost] [MYSQL]
+SHOW FUNCTION STATUS WHERE Db='mbase_data'
+
+[2018-05-24 10:26:01.000] [000076] [localhost] [MYSQL]
+SET PROFILING=1;
+
+[2018-05-24 10:26:01.000] [000076] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:26:01.000] [000076] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:26:01.016] [000076] [localhost] [MYSQL]
+SET @an ='077448';
+
+[2018-05-24 10:26:01.031] [000076] [localhost] [MYSQL]
+SELECT DISTINCT
+gcoffice.offid AS hcode
+,CONCAT(gcoffice.offid,'-3-',a.REFER_ID) refer_no
+, i.ADM_ID an
+,v.HN  hn
+,'' order_no
+,'' item_no
+,r.ROUTE_THAI drugusage_text
+,i.ADM_DT datetime_admit
+,'' datetime_rx
+,CONCAT('01',v.UNIT_REG,i.WARD_NO) wardstay
+,i.WARD_NO ward_code
+,su.UNIT_NAME  ward_name
+,'' typedrug
+, dr.DIDSTD didstd
+,dr.DRUG_NAME dname
+,'' datestart
+,'' datefinish
+,ps.RX_AMOUNT amount
+,dr.UUNIT_ID  unit
+,d.UUNIT_NAME unit_packing
+,dp.price_1 drugprice
+,dr.PRICE drugcost
+,a.STAFF_ID provider
+,CONCAT(TRIM(p.FNAME),' ',TRIM(p.LNAME) ) provider_name
+,s.LICENCE provider_licenseno
+,s.CID provider_cid
+FROM gcoffice, ipd_reg i
+INNER  JOIN refers a ON a.VISIT_ID = i.VISIT_ID AND i.IS_CANCEL = 0
+INNER JOIN staff s ON s.STAFF_ID = a.STAFF_ID
+LEFT JOIN population p ON p.CID = s.CID
+INNER JOIN cid_hn c ON  c.CID = p.CID
+LEFT JOIN opd_visits v ON v.HN = c.HN AND v.IS_CANCEL = 0
+LEFT  JOIN prescriptions ps  ON i.VISIT_ID = ps.VISIT_ID 
+LEFT  JOIN drugs dr ON dr.DRUG_ID = ps.DRUG_ID
+LEFT OUTER JOIN usage_units d ON dr.PACKAGE = d.UUNIT_ID
+LEFT JOIN service_units su ON i.WARD_NO = su.UNIT_ID
+INNER JOIN routes r ON r.ROUTE_ID = ps.ROUTE_ID
+LEFT  JOIN drug_price dp ON dp.drug_id = dr.DRUG_ID 
+WHERE   
+i.ADM_ID =@an
+AND a.RF_TYPE = '2'
+and i.IS_CANCEL = 0
+GROUP BY dname
+
+[2018-05-24 10:26:02.719] [000076] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:26:02.735] [000076] [localhost] [MYSQL]
+SELECT QUERY_ID, SUM(DURATION) AS SUM_DURATION FROM INFORMATION_SCHEMA.PROFILING GROUP BY QUERY_ID;
+
+[2018-05-24 10:26:02.735] [000076] [localhost] [MYSQL]
+SELECT STATE AS `Status`, ROUND(SUM(DURATION),7) AS `Duration`, CONCAT(ROUND(SUM(DURATION)/1.693114*100,3), '%') AS `Percentage` FROM INFORMATION_SCHEMA.PROFILING WHERE QUERY_ID=4 GROUP BY STATE;
+
+[2018-05-24 10:28:24.066] [000079] [localhost] [MYSQL]
+SHOW FULL TABLES FROM `mbase_data` WHERE Table_type != 'VIEW'
+
+[2018-05-24 10:28:24.120] [000079] [localhost] [MYSQL]
+SHOW FULL TABLES FROM `mbase_data` WHERE Table_type = 'VIEW'
+
+[2018-05-24 10:28:24.151] [000079] [localhost] [MYSQL]
+SHOW PROCEDURE STATUS WHERE Db='mbase_data'
+
+[2018-05-24 10:28:24.167] [000079] [localhost] [MYSQL]
+SHOW FUNCTION STATUS WHERE Db='mbase_data'
+
+[2018-05-24 10:28:26.205] [000078] [localhost] [MYSQL]
+SET PROFILING=1;
+
+[2018-05-24 10:28:26.205] [000078] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:28:26.205] [000078] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:28:26.220] [000078] [localhost] [MYSQL]
+SET @vn= '0001907378';
+
+[2018-05-24 10:28:26.220] [000078] [localhost] [MYSQL]
+SELECT DISTINCT
+gcoffice.offid AS hcode
+,CONCAT(gcoffice.offid,'-3-',a.REFER_ID) refer_no
+,'' form_name
+,DATE_FORMAT(l.COLLECTED_DT,'%Y%m%d') receive_date
+,DATE_FORMAT(l.COLLECTED_DT,'%H%m') receive_time
+,v.UNIT_REG department
+,a.VISIT_ID vn
+,i.ADM_ID  an
+,DATE_FORMAT(l.LREQ_DT,'%Y%m%d') order_date
+,DATE_FORMAT(l.LREQ_DT,'%H%m') order_time
+,l.LREQ_DT datetime_invest
+,l.LAB_ID inverstcode
+,la.LAB_SNAME investname
+,l.LRPT_DT datetime_report
+,l.LAB_RESULT investvalue
+,'' investunit
+,l.LAB_RESULT investresult
+,'' lab_items_sub_group_name
+,l.TECH_ID provider
+,CONCAT( trim(p.FNAME) ,'  ',trim(p.LNAME)) provider_name
+,s.LICENCE provider_licenseno
+,s.CID provider_cid
+,'' confirm
+,'' invest_type
+,'' invest_local_code
+,'' normal_value
+FROM  gcoffice , refers a
+INNER JOIN lab_requests l ON a.VISIT_ID = l.VISIT_ID AND l.IS_CANCEL = 0
+LEFT  JOIN ipd_reg i ON a.VISIT_ID= i.VISIT_ID AND i.IS_CANCEL = 0
+INNER JOIN lab_lists la ON l.LAB_ID = la.LAB_ID 
+LEFT  JOIN staff s ON s.STAFF_ID = l.TECH_ID 
+LEFT  JOIN population p ON s.CID = p.CID 
+LEFT  JOIN opd_visits v ON v.VISIT_ID = l.VISIT_ID AND v.IS_CANCEL = 0
+WHERE a.VISIT_ID = @vn
+AND a.RF_TYPE = 2
+
+[2018-05-24 10:28:26.330] [000078] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:28:26.330] [000078] [localhost] [MYSQL]
+SELECT QUERY_ID, SUM(DURATION) AS SUM_DURATION FROM INFORMATION_SCHEMA.PROFILING GROUP BY QUERY_ID;
+
+[2018-05-24 10:28:26.330] [000078] [localhost] [MYSQL]
+SELECT STATE AS `Status`, ROUND(SUM(DURATION),7) AS `Duration`, CONCAT(ROUND(SUM(DURATION)/0.099731*100,3), '%') AS `Percentage` FROM INFORMATION_SCHEMA.PROFILING WHERE QUERY_ID=4 GROUP BY STATE;
+
+[2018-05-24 10:28:50.269] [000078] [localhost] [MYSQL]
+SET PROFILING=1;
+
+[2018-05-24 10:28:50.269] [000078] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:28:50.269] [000078] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:28:50.284] [000078] [localhost] [MYSQL]
+SET @vn= '0001907378';
+
+[2018-05-24 10:28:50.284] [000078] [localhost] [MYSQL]
+SELECT DISTINCT
+gcoffice.offid AS hcode
+,CONCAT(gcoffice.offid,'-3-',a.REFER_ID) refer_no
+,'' form_name
+,DATE_FORMAT(l.COLLECTED_DT,'%Y%m%d') receive_date
+,DATE_FORMAT(l.COLLECTED_DT,'%H%i') receive_time
+,v.UNIT_REG department
+,a.VISIT_ID vn
+,i.ADM_ID  an
+,DATE_FORMAT(l.LREQ_DT,'%Y%m%d') order_date
+,DATE_FORMAT(l.LREQ_DT,'%H%m') order_time
+,l.LREQ_DT datetime_invest
+,l.LAB_ID inverstcode
+,la.LAB_SNAME investname
+,l.LRPT_DT datetime_report
+,l.LAB_RESULT investvalue
+,'' investunit
+,l.LAB_RESULT investresult
+,'' lab_items_sub_group_name
+,l.TECH_ID provider
+,CONCAT( trim(p.FNAME) ,'  ',trim(p.LNAME)) provider_name
+,s.LICENCE provider_licenseno
+,s.CID provider_cid
+,'' confirm
+,'' invest_type
+,'' invest_local_code
+,'' normal_value
+FROM  gcoffice , refers a
+INNER JOIN lab_requests l ON a.VISIT_ID = l.VISIT_ID AND l.IS_CANCEL = 0
+LEFT  JOIN ipd_reg i ON a.VISIT_ID= i.VISIT_ID AND i.IS_CANCEL = 0
+INNER JOIN lab_lists la ON l.LAB_ID = la.LAB_ID 
+LEFT  JOIN staff s ON s.STAFF_ID = l.TECH_ID 
+LEFT  JOIN population p ON s.CID = p.CID 
+LEFT  JOIN opd_visits v ON v.VISIT_ID = l.VISIT_ID AND v.IS_CANCEL = 0
+WHERE a.VISIT_ID = @vn
+AND a.RF_TYPE = 2
+
+[2018-05-24 10:28:50.378] [000078] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:28:50.378] [000078] [localhost] [MYSQL]
+SELECT QUERY_ID, SUM(DURATION) AS SUM_DURATION FROM INFORMATION_SCHEMA.PROFILING GROUP BY QUERY_ID;
+
+[2018-05-24 10:28:50.378] [000078] [localhost] [MYSQL]
+SELECT STATE AS `Status`, ROUND(SUM(DURATION),7) AS `Duration`, CONCAT(ROUND(SUM(DURATION)/0.073456*100,3), '%') AS `Percentage` FROM INFORMATION_SCHEMA.PROFILING WHERE QUERY_ID=12 GROUP BY STATE;
+
+[2018-05-24 10:29:36.816] [000078] [localhost] [MYSQL]
+SET PROFILING=1;
+
+[2018-05-24 10:29:36.816] [000078] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:29:36.816] [000078] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:29:36.832] [000078] [localhost] [MYSQL]
+SET @vn= '0001907378';
+
+[2018-05-24 10:29:36.847] [000078] [localhost] [MYSQL]
+SELECT DISTINCT
+gcoffice.offid AS hcode
+,CONCAT(gcoffice.offid,'-3-',a.REFER_ID) refer_no
+,'' form_name
+,DATE_FORMAT(l.COLLECTED_DT,'%Y%m%d') receive_date
+,DATE_FORMAT(l.COLLECTED_DT,'%H%i') receive_time
+,v.UNIT_REG department
+,a.VISIT_ID vn
+,i.ADM_ID  an
+,DATE_FORMAT(l.LREQ_DT,'%Y%m%d') order_date
+,DATE_FORMAT(l.LREQ_DT,'%H%i') order_time
+,l.LREQ_DT datetime_invest
+,l.LAB_ID inverstcode
+,la.LAB_SNAME investname
+,l.LRPT_DT datetime_report
+,l.LAB_RESULT investvalue
+,'' investunit
+,l.LAB_RESULT investresult
+,'' lab_items_sub_group_name
+,l.TECH_ID provider
+,CONCAT( trim(p.FNAME) ,'  ',trim(p.LNAME)) provider_name
+,s.LICENCE provider_licenseno
+,s.CID provider_cid
+,'' confirm
+,'' invest_type
+,'' invest_local_code
+,'' normal_value
+FROM  gcoffice , refers a
+INNER JOIN lab_requests l ON a.VISIT_ID = l.VISIT_ID AND l.IS_CANCEL = 0
+LEFT  JOIN ipd_reg i ON a.VISIT_ID= i.VISIT_ID AND i.IS_CANCEL = 0
+INNER JOIN lab_lists la ON l.LAB_ID = la.LAB_ID 
+LEFT  JOIN staff s ON s.STAFF_ID = l.TECH_ID 
+LEFT  JOIN population p ON s.CID = p.CID 
+LEFT  JOIN opd_visits v ON v.VISIT_ID = l.VISIT_ID AND v.IS_CANCEL = 0
+WHERE a.VISIT_ID = @vn
+AND a.RF_TYPE = 2
+
+[2018-05-24 10:29:36.910] [000078] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-05-24 10:29:36.925] [000078] [localhost] [MYSQL]
+SELECT QUERY_ID, SUM(DURATION) AS SUM_DURATION FROM INFORMATION_SCHEMA.PROFILING GROUP BY QUERY_ID;
+
+[2018-05-24 10:29:36.925] [000078] [localhost] [MYSQL]
+SELECT STATE AS `Status`, ROUND(SUM(DURATION),7) AS `Duration`, CONCAT(ROUND(SUM(DURATION)/0.058573*100,3), '%') AS `Percentage` FROM INFORMATION_SCHEMA.PROFILING WHERE QUERY_ID=20 GROUP BY STATE;
 

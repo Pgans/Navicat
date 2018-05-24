@@ -5,7 +5,7 @@ gcoffice.offid  hcode
 , CONCAT(gcoffice.offid,'-3-',a.REFER_ID) refer_no
 , '1' refertype_id
 ,DATE_FORMAT(a.RF_DT,'%Y%m%d')  refer_date
-,DATE_FORMAT(a.RF_DT,'%H:%m') refer_time
+,DATE_FORMAT(a.RF_DT,'%H%i') refer_time
 ,CASE
 WHEN a.UNIT_ID IN ( 02,12,13,14,15,16,17,18,19,20,27) THEN '1'
 WHEN a.UNIT_ID = 11 THEN '3'
@@ -43,6 +43,9 @@ END AS pname
 , p.LNAME lname
 ,CONCAT(timestampdiff(year,p.BIRTHDATE,a.RF_DT) ,'-',timestampdiff(month,p.BIRTHDATE,a.RF_DT)-(timestampdiff(year,p.BIRTHDATE,a.RF_DT)*12) 
 ,'-',timestampdiff(day,date_add(p.BIRTHDATE,interval (timestampdiff(month,p.BIRTHDATE,a.RF_DT)) month),a.RF_DT)) AS age
+,v.WEIGHT body_weight_kg
+,v.HEIGHT height_cm
+,p.bl_group  bloodgroup
 ,p.HOME_ADR addrpart
 ,SUBSTR(p.TOWN_ID,7,2) moopart
 ,SUBSTR(p.TOWN_ID,5,2) tmbpart
@@ -57,7 +60,7 @@ END AS pttype_id
 ,'' typept_id
 ,'' strength_id
 , a.STAFF_ID doctor_id
-,a.HOSP_ID  refer_hospcode
+,'' refer_hospcode
 , '' cause_referout_id
 ,'' expire_date
 ,'' loads_id

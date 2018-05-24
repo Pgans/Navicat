@@ -1,0 +1,15 @@
+
+SELECT DISTINCT
+refer_no
+birthday
+tel
+marrystatus
+nationality
+citizenship
+religion
+occupation
+mather_name
+father_name
+contact_name
+contact_relation
+contact_addr

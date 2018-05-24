@@ -1,12 +1,12 @@
 
 
-SET @vn = ?p0;
-#SET @vn = '0001909085'; 
+#SET @vn = ?p0;
+SET @vn = '0001909085'; 
 SELECT
  gcoffice.offid  AS hcode, CONCAT(gcoffice.offid,'-3-', a.refer_id) referback_no
 ,' ' referback_no_his
 ,DATE_FORMAT(a.RF_DT,'%Y%m%d')  refer_date
-, DATE_FORMAT(a.RF_DT,'%H:%m') refer_time
+, DATE_FORMAT(a.RF_DT,'%H%i') refer_time
 , p.CID cid,
 CASE 
 	WHEN PRENAME not in('') THEN PRENAME
@@ -22,6 +22,9 @@ END AS pname
 ,p.LNAME lname
 ,CONCAT(timestampdiff(year,p.BIRTHDATE,a.RF_DT) ,'-',timestampdiff(month,p.BIRTHDATE,a.RF_DT)-(timestampdiff(year,p.BIRTHDATE,a.RF_DT)*12) 
 ,'-',timestampdiff(day,date_add(p.BIRTHDATE,interval (timestampdiff(month,p.BIRTHDATE,a.RF_DT)) month),a.RF_DT)) AS age
+,v.WEIGHT  as body_weight_kg
+,v.HEIGHT as height_cm
+,p.bl_group as  bloodgroup
 ,p.HOME_ADR addrpart
 ,substr(p.TOWN_ID,7,2) moopart
 ,substr(p.TOWN_ID,5,2) tmbpart

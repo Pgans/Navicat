@@ -5,7 +5,7 @@ gcoffice.offid as hcode
 ,b.adm_id as an
 ,c.hn as hn
 ,b.adm_dt as datetime_admit
-,''datetime_dch
+,b.dsc_dt as datetime_dch
 ,concat('1',c.unit_reg, b.ward_no) as wardstay
 ,b.ward_no as ward_code
 ,d.unit_name as ward_name

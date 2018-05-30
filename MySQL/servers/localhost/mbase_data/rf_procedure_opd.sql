@@ -6,7 +6,7 @@ gcoffice.offid AS hcode
 ,a.VISIT_ID vn
 ,b.HN hn
 ,DATE_FORMAT(b.REG_DATETIME,'%Y%m%d') date_serv
-,DATE_FORMAT(b.REG_DATETIME,'%H%m') time_serv
+,DATE_FORMAT(b.REG_DATETIME,'%H%i') time_serv
 ,CONCAT('0',b.UNIT_REG,f.DXG_ID) clinic
 , b.UNIT_REG clinic_code
 , d.UNIT_NAME clinic_name

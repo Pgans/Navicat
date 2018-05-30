@@ -1,5 +1,5 @@
-[2018-04-19 14:17:17] [Msg] Table Type - Excel spreadsheet
-[2018-04-19 14:17:17] [Msg] Getting and Exporting data ...
-[2018-04-19 14:17:17] [Msg] Export query [Untitled Query]
-[2018-04-19 14:17:17] [Msg] Export to - C:\Users\Lenovo\Desktop\เด็กคลอดปีงบประมาณ2560.xls
-[2018-04-19 14:17:17] [Msg] Finished - Successfully
+[2018-05-28 14:55:37] [Msg] Table Type - Excel spreadsheet
+[2018-05-28 14:55:37] [Msg] Getting and Exporting data ...
+[2018-05-28 14:55:37] [Msg] Export query [หาโรคAP ที่Dx_Primary เอาโรคร่วมมาด้วย]
+[2018-05-28 14:55:37] [Msg] Export to - C:\Users\Lenovo\Desktop\หาโรคAP(B24) ที่Dx_Primary เอาโรคร่วมมาด้วย.xls
+[2018-05-28 14:55:38] [Msg] Finished - Successfully

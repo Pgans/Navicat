@@ -1,5 +1,14 @@
+<<<<<<< HEAD
 [2018-06-12 13:18:11] [Msg] Table Type - Excel spreadsheet
 [2018-06-12 13:18:11] [Msg] Getting and Exporting data ...
 [2018-06-12 13:18:11] [Msg] Export query [หาจำนวนผู้ป่วยโรคซึมเศร้าF320]
 [2018-06-12 13:18:11] [Msg] Export to - C:\Users\Lenovo\Documents\หาจำนวนผู้ป่วยโรคซึมเศร้าF320(คน).xls
 [2018-06-12 13:18:13] [Msg] Finished - Successfully
+=======
+[2018-05-30 13:30:18] [Msg] Table Type - Excel file
+[2018-05-30 13:30:18] [Msg] Getting and Exporting data ...
+[2018-05-30 13:30:18] [Msg] Export query [ หาDiagAPที่มีโรคร่วมด้วย]
+[2018-05-30 13:30:18] [Msg] Export to - C:\users\pgans\My Documents\ หาDiagAPที่มีโรคร่วมด้วย.xls
+[2018-05-30 13:30:18] [Err] OLE error 800401F3, ProgID: "Excel.Application"
+[2018-05-30 13:30:18] [Msg] Finished - Unsuccessfully
+>>>>>>> 12a630b9d156d22ce54d63be1a429a3bcac7e925

@@ -1,5 +1,5 @@
-[2018-06-18 13:58:56] [Msg] Table Type - Excel spreadsheet
-[2018-06-18 13:58:56] [Msg] Getting and Exporting data ...
-[2018-06-18 13:58:56] [Msg] Export query [คัดรายชื้อผู้ป่วยที่ Diag F11-F16 F18-F19]
-[2018-06-18 13:58:56] [Msg] Export to - C:\Users\Lenovo\Documents\คัดรายชื้อผู้ป่วยที่10953 Diag F11-F16 F18-F19.xls
-[2018-06-18 13:58:56] [Msg] Finished - Successfully
+[2018-06-19 08:09:10] [Msg] Table Type - Excel spreadsheet
+[2018-06-19 08:09:10] [Msg] Getting and Exporting data ...
+[2018-06-19 08:09:10] [Msg] Export query [คัดรายชื้อผู้ป่วยที่ Diag F11-F16 F18-F19]
+[2018-06-19 08:09:10] [Msg] Export to - C:\Users\Lenovo\Documents\คัดรายชื้อผู้ป่วยที่ Diag F11-F16 F18-F19.xls
+[2018-06-19 08:09:12] [Msg] Finished - Successfully

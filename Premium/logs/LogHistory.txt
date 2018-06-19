@@ -7,3 +7,79 @@ SHOW VARIABLES LIKE 'profiling'
 [2018-06-19 08:07:46.456] [002731] [samba3] [MYSQL]
 SHOW DATABASES
 
+[2018-06-19 08:07:49.670] [002732] [samba3] [MYSQL]
+SELECT @@character_set_database, @@collation_database
+
+[2018-06-19 08:07:49.733] [002732] [samba3] [MYSQL]
+SHOW FULL TABLES WHERE Table_type != 'VIEW'
+
+[2018-06-19 08:08:17.549] [002734] [samba3] [MYSQL]
+SHOW FULL TABLES FROM `mbase_data` WHERE Table_type != 'VIEW'
+
+[2018-06-19 08:08:18.064] [002734] [samba3] [MYSQL]
+SHOW FULL TABLES FROM `mbase_data` WHERE Table_type = 'VIEW'
+
+[2018-06-19 08:08:18.064] [002734] [samba3] [MYSQL]
+SHOW PROCEDURE STATUS WHERE Db='mbase_data'
+
+[2018-06-19 08:08:18.814] [002734] [samba3] [MYSQL]
+SHOW FUNCTION STATUS WHERE Db='mbase_data'
+
+[2018-06-19 08:08:22.102] [002733] [samba3] [MYSQL]
+SET PROFILING=1;
+
+[2018-06-19 08:08:22.102] [002733] [samba3] [MYSQL]
+SHOW STATUS
+
+[2018-06-19 08:08:22.148] [002733] [samba3] [MYSQL]
+SHOW STATUS
+
+[2018-06-19 08:08:22.164] [002733] [samba3] [MYSQL]
+SELECT  a.CID , a.FNAME, a.LNAME,
+CASE 
+WHEN a.SEX = 1 THEN 'ชาย'
+WHEN a.SEX = 2 THEN 'หญิง'
+END AS SEX, 
+floor(DATEDIFF(NOW(),a.BIRTHDATE)/365.25) AS AGE,
+e.ICD10_TM, e.ICD_NAME , a.HOME_ADR AS 'HOME', f.TOWN_NAME AS 'MOOBAN',g.town_name AS 'TUMBON', h.town_name AS 'AMPOR'
+FROM population a 
+INNER JOIN cid_hn b ON a.cid = b.cid
+INNER JOIN opd_visits c  ON b.hn = c.hn
+INNER JOIN opd_diagnosis d ON c.visit_id = d.visit_id AND d.is_cancel =0
+INNER JOIN icd10new e ON d.icd10 = e.icd10 AND (e.icd10_tm BETWEEN 'F11' AND 'F16' OR e.icd10_tm BETWEEN 'F18' AND 'F19')
+INNER JOIN towns f ON a.town_id = f.town_id 
+INNER JOIN towns g ON CONCAT(LEFT(a.town_id,6),'00')= g.TOWN_ID
+INNER JOIN towns h ON CONCAT(LEFT(a.town_id,4),'0000')= h.TOWN_ID
+WHERE c.is_cancel = 0
+AND a.cid NOT IN (SELECT cid FROM deaths)
+GROUP BY c.HN ;
+
+[2018-06-19 08:08:24.154] [002733] [samba3] [MYSQL]
+SHOW STATUS
+
+[2018-06-19 08:08:24.169] [002733] [samba3] [MYSQL]
+SELECT QUERY_ID, SUM(DURATION) AS SUM_DURATION FROM INFORMATION_SCHEMA.PROFILING GROUP BY QUERY_ID;
+
+[2018-06-19 08:08:24.169] [002733] [samba3] [MYSQL]
+SELECT STATE AS `Status`, ROUND(SUM(DURATION),7) AS `Duration`, CONCAT(ROUND(SUM(DURATION)/1.977612*100,3), '%') AS `Percentage` FROM INFORMATION_SCHEMA.PROFILING WHERE QUERY_ID=3 GROUP BY STATE;
+
+[2018-06-19 08:09:10.381] [002736] [samba3] [MYSQL]
+SELECT  a.CID , a.FNAME, a.LNAME,
+CASE 
+WHEN a.SEX = 1 THEN 'ชาย'
+WHEN a.SEX = 2 THEN 'หญิง'
+END AS SEX, 
+floor(DATEDIFF(NOW(),a.BIRTHDATE)/365.25) AS AGE,
+e.ICD10_TM, e.ICD_NAME , a.HOME_ADR AS 'HOME', f.TOWN_NAME AS 'MOOBAN',g.town_name AS 'TUMBON', h.town_name AS 'AMPOR'
+FROM population a 
+INNER JOIN cid_hn b ON a.cid = b.cid
+INNER JOIN opd_visits c  ON b.hn = c.hn
+INNER JOIN opd_diagnosis d ON c.visit_id = d.visit_id AND d.is_cancel =0
+INNER JOIN icd10new e ON d.icd10 = e.icd10 AND (e.icd10_tm BETWEEN 'F11' AND 'F16' OR e.icd10_tm BETWEEN 'F18' AND 'F19')
+INNER JOIN towns f ON a.town_id = f.town_id 
+INNER JOIN towns g ON CONCAT(LEFT(a.town_id,6),'00')= g.TOWN_ID
+INNER JOIN towns h ON CONCAT(LEFT(a.town_id,4),'0000')= h.TOWN_ID
+WHERE c.is_cancel = 0
+AND a.cid NOT IN (SELECT cid FROM deaths)
+GROUP BY c.HN ;
+

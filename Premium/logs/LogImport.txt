@@ -1,6 +1,15 @@
-[2018-04-09 14:12:16] [Msg] Import start
-[2018-04-09 14:12:16] [Msg] Import type - Text file
-[2018-04-09 14:12:16] [Msg] Import from - C:\F43\IMPORT\service.txt
-[2018-04-09 14:12:16] [Msg] Import table [service]
-[2018-04-09 14:12:18] [Msg] Processed:10694, Added:10694, Updated:0, Deleted:0, Errors:0
-[2018-04-09 14:12:18] [Msg] Finished - Successfully
+[2018-06-19 14:31:52] [Msg] Import start
+[2018-06-19 14:31:52] [Msg] Import type - Excel file
+[2018-06-19 14:31:52] [Msg] Import from - C:\Users\Lenovo\Desktop\null61_update610619\null61_update610619.xls
+[2018-06-19 14:31:52] [Msg] Create table [null_4survey]
+[2018-06-19 14:31:52] [Msg] Import table [null_4survey]
+[2018-06-19 14:31:52] [Msg] Create table [ofc_sss]
+[2018-06-19 14:31:52] [Msg] Import table [ofc_sss]
+[2018-06-19 14:31:52] [Msg] Create table [null to UC]
+[2018-06-19 14:31:52] [Msg] Import table [null to UC]
+[2018-06-19 14:31:53] [Msg] Create table [nullจองUC]
+[2018-06-19 14:31:53] [Msg] Import table [nullจองUC]
+[2018-06-19 14:31:53] [Msg] Create table [dead]
+[2018-06-19 14:31:53] [Msg] Import table [dead]
+[2018-06-19 14:31:53] [Msg] Processed:6563, Added:6563, Updated:0, Deleted:0, Errors:0
+[2018-06-19 14:31:53] [Msg] Finished - Successfully

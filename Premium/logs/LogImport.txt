@@ -1,15 +1,6 @@
-[2018-06-19 14:31:52] [Msg] Import start
-[2018-06-19 14:31:52] [Msg] Import type - Excel file
-[2018-06-19 14:31:52] [Msg] Import from - C:\Users\Lenovo\Desktop\null61_update610619\null61_update610619.xls
-[2018-06-19 14:31:52] [Msg] Create table [null_4survey]
-[2018-06-19 14:31:52] [Msg] Import table [null_4survey]
-[2018-06-19 14:31:52] [Msg] Create table [ofc_sss]
-[2018-06-19 14:31:52] [Msg] Import table [ofc_sss]
-[2018-06-19 14:31:52] [Msg] Create table [null to UC]
-[2018-06-19 14:31:52] [Msg] Import table [null to UC]
-[2018-06-19 14:31:53] [Msg] Create table [nullจองUC]
-[2018-06-19 14:31:53] [Msg] Import table [nullจองUC]
-[2018-06-19 14:31:53] [Msg] Create table [dead]
-[2018-06-19 14:31:53] [Msg] Import table [dead]
-[2018-06-19 14:31:53] [Msg] Processed:6563, Added:6563, Updated:0, Deleted:0, Errors:0
-[2018-06-19 14:31:53] [Msg] Finished - Successfully
+[2018-06-26 13:24:09] [Msg] Import start
+[2018-06-26 13:24:09] [Msg] Import type - Excel2007 file
+[2018-06-26 13:24:09] [Msg] Import from - C:\Users\Lenovo\Desktop\Data_Exchange (1).xlsx
+[2018-06-26 13:24:09] [Msg] Import table [mb_dent26]
+[2018-06-26 13:24:09] [Msg] Processed:608, Added:608, Updated:0, Deleted:0, Errors:0
+[2018-06-26 13:24:09] [Msg] Finished - Successfully

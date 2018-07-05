@@ -1,8 +1,0 @@
-
-SELECT  CURDATE() AS regdate, COUNT(a.VISIT_ID) AS visits , COUNT(DISTINCT a.HN) as total
-FROM opd_visits a
-WHERE  a.REG_DATETIME > CURDATE()
-AND a.IS_CANCEL = 0
-AND a.VISIT_ID NOT IN (SELECT VISIT_ID FROM ipd_reg)
-
-  

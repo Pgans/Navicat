@@ -1,9 +1,146 @@
-[2018-06-20 13:16:34.044] [004065] [samba3] [MYSQL]
+[2018-07-05 14:53:59.548] [000003] [localhost] [MYSQL]
 SHOW VARIABLES LIKE 'lower_case_%'
 
-[2018-06-20 13:16:34.044] [004065] [samba3] [MYSQL]
+[2018-07-05 14:53:59.562] [000003] [localhost] [MYSQL]
 SHOW VARIABLES LIKE 'profiling'
 
-[2018-06-20 13:16:34.044] [004065] [samba3] [MYSQL]
+[2018-07-05 14:53:59.563] [000003] [localhost] [MYSQL]
 SHOW DATABASES
+
+[2018-07-05 14:54:01.259] [000004] [localhost] [MYSQL]
+SELECT @@character_set_database, @@collation_database
+
+[2018-07-05 14:54:01.272] [000004] [localhost] [MYSQL]
+SHOW FULL TABLES WHERE Table_type != 'VIEW'
+
+[2018-07-05 14:54:24.680] [000005] [localhost] [MYSQL]
+SHOW FULL TABLES FROM `mbase_data` WHERE Table_type != 'VIEW'
+
+[2018-07-05 14:54:24.746] [000005] [localhost] [MYSQL]
+SHOW FULL TABLES FROM `mbase_data` WHERE Table_type = 'VIEW'
+
+[2018-07-05 14:54:24.796] [000005] [localhost] [MYSQL]
+SHOW PROCEDURE STATUS WHERE Db='mbase_data'
+
+[2018-07-05 14:54:24.815] [000005] [localhost] [MYSQL]
+SHOW FUNCTION STATUS WHERE Db='mbase_data'
+
+[2018-07-05 14:54:26.819] [000006] [localhost] [MYSQL]
+SET PROFILING=1;
+
+[2018-07-05 14:54:26.819] [000006] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-07-05 14:54:26.824] [000006] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-07-05 14:54:26.832] [000006] [localhost] [MYSQL]
+SELECT a.REG_DATETIME  ,a.VISIT_ID, .a.HN , c.ICD10_TM, c.ICD_NAME
+FROM opd_visits a
+INNER JOIN opd_diagnosis b  ON a.visit_id = b.visit_id AND b.is_cancel = 0
+INNER JOIN icd10new c ON b.icd10 = c.icd10 AND c.icd10_tm  BETWEEN 'A90' AND 'A99'
+WHERE a.REG_DATETIME BETWEEN '2018-06-01' AND '2018-06-30'
+AND a.is_cancel = 0
+GROUP BY a.VISIT_ID
+
+[2018-07-05 14:54:27.961] [000006] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-07-05 14:54:27.965] [000006] [localhost] [MYSQL]
+SELECT QUERY_ID, SUM(DURATION) AS SUM_DURATION FROM INFORMATION_SCHEMA.PROFILING GROUP BY QUERY_ID
+
+[2018-07-05 14:54:27.966] [000006] [localhost] [MYSQL]
+SELECT STATE AS `State`, ROUND(SUM(DURATION),7) AS `Duration`, CONCAT(ROUND(SUM(DURATION)/1.125073*100,3), '%') AS `Percentage` FROM INFORMATION_SCHEMA.PROFILING WHERE QUERY_ID=3 GROUP BY STATE ORDER BY SEQ
+
+[2018-07-05 14:56:45.879] [000007] [localhost] [MYSQL]
+SHOW FULL TABLES FROM `mbase_data` WHERE Table_type != 'VIEW'
+
+[2018-07-05 14:56:45.946] [000007] [localhost] [MYSQL]
+SHOW FULL TABLES FROM `mbase_data` WHERE Table_type = 'VIEW'
+
+[2018-07-05 14:56:45.994] [000007] [localhost] [MYSQL]
+SHOW PROCEDURE STATUS WHERE Db='mbase_data'
+
+[2018-07-05 14:56:45.997] [000007] [localhost] [MYSQL]
+SHOW FUNCTION STATUS WHERE Db='mbase_data'
+
+[2018-07-05 14:57:21.740] [000008] [localhost] [MYSQL]
+SET PROFILING=1;
+
+[2018-07-05 14:57:21.740] [000008] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-07-05 14:57:21.742] [000008] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-07-05 14:57:21.751] [000008] [localhost] [MYSQL]
+SELECT CURDATE()
+ AS regdate ,
+COUNT(CASE WHEN(a.visit_id) THEN '1' END) AS 'home',
+COUNT(CASE WHEN (e.VISIT_ID) THEN '2' END) AS 'refer',
+COUNT(CASE WHEN (d.VISIT_ID) THEN '3' END) AS 'admitt'
+FROM opd_visits a
+INNER JOIN opd_diagnosis b  ON a.visit_id = b.visit_id AND b.is_cancel = 0
+INNER JOIN icd10new c ON b.icd10 = c.icd10 AND c.icd10_tm  BETWEEN 'A90' AND 'A99'
+LEFT JOIN ipd_reg d ON a.visit_id = d.visit_id  AND d.is_cancel =0
+LEFT JOIN refers e ON a.visit_id = e.visit_id AND e.is_cancel = 0
+WHERE a.REG_DATETIME >CURDATE()
+AND a.is_cancel = 0
+GROUP BY regdate
+
+[2018-07-05 14:57:21.771] [000008] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-07-05 14:57:21.773] [000008] [localhost] [MYSQL]
+SELECT QUERY_ID, SUM(DURATION) AS SUM_DURATION FROM INFORMATION_SCHEMA.PROFILING GROUP BY QUERY_ID
+
+[2018-07-05 14:57:21.774] [000008] [localhost] [MYSQL]
+SELECT STATE AS `State`, ROUND(SUM(DURATION),7) AS `Duration`, CONCAT(ROUND(SUM(DURATION)/0.011781*100,3), '%') AS `Percentage` FROM INFORMATION_SCHEMA.PROFILING WHERE QUERY_ID=3 GROUP BY STATE ORDER BY SEQ
+
+[2018-07-05 14:59:28.972] [000007] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`opd_visits`
+
+[2018-07-05 14:59:28.996] [000007] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`opd_diagnosis`
+
+[2018-07-05 14:59:29.007] [000007] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`icd10new`
+
+[2018-07-05 14:59:29.013] [000007] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`ipd_reg`
+
+[2018-07-05 14:59:29.019] [000007] [localhost] [MYSQL]
+SHOW COLUMNS FROM `mbase_data`.`refers`
+
+[2018-07-05 15:00:36.122] [000008] [localhost] [MYSQL]
+SET PROFILING=1;
+
+[2018-07-05 15:00:36.122] [000008] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-07-05 15:00:36.126] [000008] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-07-05 15:00:36.133] [000008] [localhost] [MYSQL]
+SELECT DISTINCT MONTH(a.REG_DATETIME) as month,
+COUNT(CASE WHEN(a.visit_id) THEN '1' END) AS 'home',
+COUNT(CASE WHEN (e.VISIT_ID) THEN '2' END) AS 'refer',
+COUNT(CASE WHEN (d.VISIT_ID) THEN '3' END) AS 'admitt'
+FROM opd_visits a
+INNER JOIN opd_diagnosis b  ON a.visit_id = b.visit_id AND b.is_cancel = 0
+INNER JOIN icd10new c ON b.icd10 = c.icd10 AND c.icd10_tm  BETWEEN 'A90' AND 'A99'
+LEFT JOIN ipd_reg d ON a.visit_id = d.visit_id  AND d.is_cancel =0
+LEFT JOIN refers e ON a.visit_id = e.visit_id AND e.is_cancel = 0
+WHERE a.REG_DATETIME > '2018-06-01'
+AND a.is_cancel = 0
+GROUP BY month
+
+[2018-07-05 15:00:36.178] [000008] [localhost] [MYSQL]
+SHOW STATUS
+
+[2018-07-05 15:00:36.181] [000008] [localhost] [MYSQL]
+SELECT QUERY_ID, SUM(DURATION) AS SUM_DURATION FROM INFORMATION_SCHEMA.PROFILING GROUP BY QUERY_ID
+
+[2018-07-05 15:00:36.182] [000008] [localhost] [MYSQL]
+SELECT STATE AS `State`, ROUND(SUM(DURATION),7) AS `Duration`, CONCAT(ROUND(SUM(DURATION)/0.038377*100,3), '%') AS `Percentage` FROM INFORMATION_SCHEMA.PROFILING WHERE QUERY_ID=10 GROUP BY STATE ORDER BY SEQ
 

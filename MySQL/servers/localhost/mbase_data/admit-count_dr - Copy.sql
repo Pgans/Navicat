@@ -1,8 +1,0 @@
-SELECT a.ADM_DT, a.ADM_DR, c.FNAME , count(a.ADM_DR) AS AMOUNT
-FROM ipd_reg a
-INNER JOIN staff b ON a.ADM_DR = b.STAFF_ID
-LEFT JOIN population c ON b.CID = c.CID
-WHERE a.ADM_DT > CURDATE()-3
-AND a.IS_CANCEL = 0
-AND a.ADM_DT <> 0
-GROUP BY a.ADM_DR ORDER BY amount DESC ;

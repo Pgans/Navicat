@@ -1,5 +1,5 @@
-[2018-06-20 11:13:12] [Msg] Table Type - Excel spreadsheet
-[2018-06-20 11:13:12] [Msg] Getting and Exporting data ...
-[2018-06-20 11:13:12] [Msg] Export query [หาDrug_allergyพร้อมที่อยู่]
-[2018-06-20 11:13:12] [Msg] Export to - C:\Users\Lenovo\Desktop\หาDrug_allergyพร้อมที่อยู่.xls
-[2018-06-20 11:13:12] [Msg] Finished - Successfully
+[2018-08-24 08:41:04] [Msg] Table Type - Excel spreadsheet
+[2018-08-24 08:41:04] [Msg] Getting and Exporting data ...
+[2018-08-24 08:41:04] [Msg] Export query [asthma+addess]
+[2018-08-24 08:41:04] [Msg] Export to - C:\Users\Lenovo\Desktop\asthma+addess.xls
+[2018-08-24 08:41:04] [Msg] Finished - Successfully

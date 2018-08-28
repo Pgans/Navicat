@@ -1,0 +1,6 @@
+SELECT a.CID_BABY,b.HN , a.BDATE, a.BCARE1 , a.BCARE2 , a.STAFF_ID , a.IS_CANCEL 
+FROM anc_outcome  a 
+INNER JOIN cid_hn b ON a.CID_MOM = b.CID 
+WHERE  a.REG_DATETIME > '2018.05.01'
+AND a.IS_CANCEL = 0
+

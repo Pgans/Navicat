@@ -1,5 +1,5 @@
-[2018-08-24 08:41:04] [Msg] Table Type - Excel spreadsheet
-[2018-08-24 08:41:04] [Msg] Getting and Exporting data ...
-[2018-08-24 08:41:04] [Msg] Export query [asthma+addess]
-[2018-08-24 08:41:04] [Msg] Export to - C:\Users\Lenovo\Desktop\asthma+addess.xls
-[2018-08-24 08:41:04] [Msg] Finished - Successfully
+[2018-09-06 08:17:11] [Msg] Table Type - Excel file
+[2018-09-06 08:17:11] [Msg] Getting and Exporting data ...
+[2018-09-06 08:17:11] [Msg] Export query [หาผู้ป่วยเบาหวานที่มีผลตรวจHBA1cพร้อมที่อยู่]
+[2018-09-06 08:17:11] [Msg] Export to - C:\Users\Lenovo\Desktop\หาผู้ป่วยเบาหวานที่มีผลตรวจHBA1cระหว่าง7-8.xlsx
+[2018-09-06 08:17:15] [Msg] Finished - Successfully

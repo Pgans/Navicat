@@ -12,7 +12,7 @@ COUNT(CASE WHEN(b.ppspecial = '1B612') THEN '10' END) AS '1B612'
 
 FROM  opd_visits a
 INNER JOIN specialpp b ON a.visit_id = b.visit_id and b.is_cancel = 0
-WHERE a.reg_datetime  BETWEEN '2018.07.01 00:01' AND '2018.08.31 23:59'
+WHERE a.reg_datetime  > '2018.07.01 00:01' 
 AND a.is_cancel = 0
 GROUP BY month2562
 

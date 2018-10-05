@@ -12,7 +12,7 @@
 
 7. UPDATE mathhn SET datedeath =(SELECT DISTINCT death_date FROM deaths WHERE deaths.cid = mathhn.cid) ;
 
-8. DELETE  FROM mathhn WHERE datedeath < '2013-10-01';
+8. DELETE  FROM mathhn WHERE datedeath < '2015-10-01';
 
   //คัด Hn ว่าง ที่ยังไม่มีใน mBsae
 9. SELECT a.cid,a.hn from mathhn a, population b WHERE a.cid = b.cid AND a.hn is NULL AND a.cid NOT IN (SELECT cid from deaths);

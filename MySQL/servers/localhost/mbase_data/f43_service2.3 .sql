@@ -1,0 +1,54 @@
+
+	SELECT 
+gcoffice.offid as HOSPCODE,
+a.HN as PID ,
+a.HN as HN,
+a.visit_id as SEQ,
+DATE_FORMAT(a.REG_DATETIME,'%Y%m%d') as DATE_SERV,
+DATE_FORMAT(a.REG_DATETIME,'%H%i%s') as TIME_SERV,
+'2' as LOCATION,
+(CASE 
+WHEN DATE_FORMAT(a.REG_DATETIME,'%H%i') BETWEEN '0800' AND'1600' THEN '1'
+ELSE '2'
+END) AS INTIME,
+d.STD_CODE as INSTYPE,
+(CASE WHEN ISNULL(e.UC_CARDID) THEN ''
+ELSE e.UC_CARDID END) as INSID,
+(CASE WHEN ISNULL(e.HOSPMAIN) THEN '10953'
+ELSE e.HOSPMAIN END) as MAIN,
+'1' as TYPEIN,
+(CASE WHEN ISNULL(f.HOSP_ID) THEN ''
+ELSE f.HOSP_ID END) as REFERINHOSP,
+'1' as CAUSEIN,
+'' as CHIEFCOMP,
+(CASE WHEN a.VISIT_ID NOT in(SELECT VISIT_ID FROM mbase_data.mobile_visits) THEN '1'
+	ELSE '2'
+END)as SERVPLACE,
+a.BODY_TEMP as BTEMP,
+a.BP_SYST as SBP,
+a.BP_DIAS as DBP,
+a.PULSE_RATE as PR,
+a.RESP_RATE as RR,
+'1' TYPEOUT,
+(CASE WHEN ISNULL(g.hosp_id) THEN ''
+	ELSE g.HOSP_ID
+END) AS REFEROUTHOSP,
+ROUND(0.00,2) as CAUSEOUT,
+ROUND(0.00,2) as COST,
+ROUND(0.00,2) as PRICE,
+ROUND(0.00,2)as PAYPRICE,
+ROUND(0.00,2)as  ACTUALPAY,
+DATE_FORMAT(NOW(),'%Y%m%d%H%i%s') as D_UPDATE,
+'' HSUB,
+c.CID as CID
+FROM mbase_data.gcoffice, mbase_data.opd_visits a
+INNER JOIN mbase_data.cid_hn b ON a.HN = b.hn
+INNER JOIN mbase_data.population c ON b.cid = c.cid
+INNER JOIN mbase_data.main_inscls d ON a.INSCL = d.INSCL
+LEFT JOIN  mbase_data.uc_inscl e ON c.CID = e.CID
+LEFT OUTER JOIN mbase_data.refers f ON a.VISIT_ID = f.VISIT_ID AND f.IS_CANCEL = 0 AND f.RF_TYPE = '1'
+LEFT OUTER JOIN mbase_data.refers g ON a.VISIT_ID = g.VISIT_ID AND g.IS_CANCEL = 0 AND g.RF_TYPE = '2'
+WHERE a.REG_DATETIME >='2020.02.01 00:01'
+AND a.IS_CANCEL =0
+AND LEFT( c.cid, 8 ) <> '00000000'
+GROUP BY a.VISIT_ID
